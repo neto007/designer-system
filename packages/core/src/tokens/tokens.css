@@ -1,0 +1,219 @@
+/* =============================================================
+   SHIELDAI · DESIGN TOKENS
+   Single source of truth — consumed by Tailwind config & CSS.
+   ============================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+:root {
+  /* ---- SURFACE SCALE (near-black tones) ---- */
+  --ds-bg:        #050101;   /* page canvas */
+  --ds-panel:     #0b0b11;   /* cards, dialogs */
+  --ds-current:   #1a1b26;   /* borders, hover */
+  --ds-selection: #282a36;   /* selection, raised */
+
+  /* ---- TEXT ---- */
+  --ds-fg:        #f8f8f2;   /* primary */
+  --ds-comment:   #6272a4;   /* muted */
+  --ds-on-accent: #000000;   /* text on neon backgrounds (dark theme = black on bright neons) */
+
+  /* ---- SIGNAL PALETTE (Dracula neons) ---- */
+  --ds-purple:    #bd93f9;   /* primary · brand · LLM */
+  --ds-green:     #50fa7b;   /* success · live · user */
+  --ds-cyan:      #8be9fd;   /* info · workflow */
+  --ds-pink:      #ff79c6;   /* hover · parallel */
+  --ds-orange:    #ffb86c;   /* warning · loop · tool */
+  --ds-yellow:    #f1fa8c;   /* attention · sequential */
+  --ds-red:       #ff5555;   /* destructive · task · alert */
+
+  /* ---- RGB TRIPLETS (for Tailwind opacity modifiers) ---- */
+  --ds-bg-rgb:        5 1 1;
+  --ds-panel-rgb:     11 11 17;
+  --ds-current-rgb:   26 27 38;
+  --ds-selection-rgb: 40 42 54;
+  --ds-fg-rgb:        248 248 242;
+  --ds-comment-rgb:   98 114 164;
+  --ds-purple-rgb:    189 147 249;
+  --ds-green-rgb:     80 250 123;
+  --ds-cyan-rgb:      139 233 253;
+  --ds-pink-rgb:      255 121 198;
+  --ds-orange-rgb:    255 184 108;
+  --ds-yellow-rgb:    241 250 140;
+  --ds-red-rgb:       255 85 85;
+
+  /* ---- TYPE ---- */
+  --ds-font-sans: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --ds-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ds-fs-9:   9px;
+  --ds-fs-10: 10px;
+  --ds-fs-12: 12px;
+  --ds-fs-14: 14px;
+  --ds-fs-16: 16px;
+  --ds-fs-20: 20px;
+  --ds-fs-24: 24px;
+  --ds-fs-32: 32px;
+  --ds-fs-40: 40px;
+  --ds-fs-56: 56px;
+  --ds-fs-72: 72px;
+
+  --ds-tracking-widest: 0.2em;
+
+  /* ---- SPACING (4 px base) ---- */
+  --ds-s-1:   4px;
+  --ds-s-2:   8px;
+  --ds-s-3:  12px;
+  --ds-s-4:  16px;
+  --ds-s-6:  24px;
+  --ds-s-8:  32px;
+  --ds-s-12: 48px;
+  --ds-s-16: 64px;
+  --ds-s-24: 96px;
+
+  /* ---- RADIUS ---- */
+  --ds-r-none: 0;
+  --ds-r-sm:   2px;
+  --ds-r-md:   4px;
+  --ds-r-lg:   8px;
+  --ds-r-xl:  12px;
+  --ds-r-2xl: 16px;
+  --ds-r-pill: 9999px;
+
+  /* ---- GLOW (Dracula signature) ---- */
+  --ds-glow-sm-purple: 0 0 8px  rgba(189,147,249,.30);
+  --ds-glow-md-purple: 0 0 15px rgba(189,147,249,.35);
+  --ds-glow-lg-purple: 0 0 25px rgba(189,147,249,.55);
+  --ds-glow-xl-purple: 0 0 40px rgba(189,147,249,.70), inset 0 0 20px rgba(189,147,249,.2);
+
+  --ds-glow-md-green:  0 0 15px rgba(80,250,123,.35);
+  --ds-glow-md-cyan:   0 0 15px rgba(139,233,253,.35);
+  --ds-glow-md-pink:   0 0 15px rgba(255,121,198,.35);
+  --ds-glow-md-orange: 0 0 15px rgba(255,184,108,.35);
+  --ds-glow-md-yellow: 0 0 15px rgba(241,250,140,.35);
+  --ds-glow-md-red:    0 0 15px rgba(255,85,85,.35);
+
+  /* ---- NEOBRUTALISM SHADOWS (offset, no blur) ---- */
+  --ds-neu-sm:     2px 2px 0px 0px rgba(0,0,0,1);
+  --ds-neu:        4px 4px 0px 0px rgba(0,0,0,1);
+  --ds-neu-lg:     6px 6px 0px 0px rgba(0,0,0,1);
+  --ds-neu-purple: 4px 4px 0px 0px #bd93f9;
+  --ds-neu-green:  4px 4px 0px 0px #50fa7b;
+  --ds-neu-pink:   4px 4px 0px 0px #ff79c6;
+  --ds-neu-cyan:   4px 4px 0px 0px #8be9fd;
+  --ds-neu-orange: 4px 4px 0px 0px #ffb86c;
+  --ds-neu-red:    4px 4px 0px 0px #ff5555;
+
+  /* ---- MOTION ---- */
+  --ds-dur-fast:    150ms;
+  --ds-dur-default: 200ms;
+  --ds-dur-slow:    300ms;
+  --ds-ease-out:    cubic-bezier(.4,0,.2,1);
+  --ds-ease-spring: cubic-bezier(.34,1.56,.64,1);
+
+  /* ---- Z-INDEX ---- */
+  --ds-z-base:     1;
+  --ds-z-dropdown: 50;
+  --ds-z-sticky:   60;
+  --ds-z-overlay:  70;
+  --ds-z-modal:    80;
+  --ds-z-toast:    90;
+  --ds-z-tooltip:  100;
+
+  /* ---- LAYOUT ---- */
+  --ds-header-h:  64px;
+  --ds-sidebar-w: 260px;
+  --ds-max-w:     1280px;
+}
+
+/* =============================================================
+   LIGHT THEME OVERRIDES
+   Applied when <html data-theme="light"> is set.
+   ============================================================= */
+
+[data-theme="light"] {
+  /* ---- SURFACE SCALE ---- */
+  --ds-bg:        #f5f5f9;   /* page canvas */
+  --ds-panel:     #ffffff;   /* cards, dialogs */
+  --ds-current:   #e2e2ee;   /* borders, hover */
+  --ds-selection: #eeeef8;   /* selection, raised */
+
+  /* ---- TEXT ---- */
+  --ds-fg:        #282a36;   /* Dracula dark → primary text */
+  --ds-comment:   #6272a4;   /* muted (same — works on both) */
+  --ds-on-accent: #ffffff;   /* text on jewel tone backgrounds (light theme = white on dark jewels) */
+
+  /* ---- SIGNAL PALETTE (jewel tones — vivid on white) ---- */
+  --ds-purple:    #7c3aed;   /* violet-600 */
+  --ds-green:     #059669;   /* emerald-600 — jewel green */
+  --ds-cyan:      #0284c7;   /* sky-600 — electric */
+  --ds-pink:      #db2777;   /* pink-600 — hot pink */
+  --ds-orange:    #ea580c;   /* orange-600 — vivid */
+  --ds-yellow:    #d97706;   /* amber-600 — warm gold */
+  --ds-red:       #e11d48;   /* rose-600 — vivid */
+
+  /* ---- RGB TRIPLETS (light) ---- */
+  --ds-bg-rgb:        245 245 249;
+  --ds-panel-rgb:     255 255 255;
+  --ds-current-rgb:   226 226 238;
+  --ds-selection-rgb: 238 238 248;
+  --ds-fg-rgb:        40 42 54;
+  --ds-comment-rgb:   98 114 164;
+  --ds-purple-rgb:    124 58 237;
+  --ds-green-rgb:     5 150 105;
+  --ds-cyan-rgb:      2 132 199;
+  --ds-pink-rgb:      219 39 119;
+  --ds-orange-rgb:    234 88 12;
+  --ds-yellow-rgb:    217 119 6;
+  --ds-red-rgb:       225 29 72;
+
+  /* ---- GLOW (stronger on light bg for visibility) ---- */
+  --ds-glow-sm-purple: 0 0 8px  rgba(124,58,237,.28);
+  --ds-glow-md-purple: 0 0 15px rgba(124,58,237,.35);
+  --ds-glow-lg-purple: 0 0 25px rgba(124,58,237,.45);
+  --ds-glow-xl-purple: 0 0 40px rgba(124,58,237,.55), inset 0 0 20px rgba(124,58,237,.12);
+
+  --ds-glow-md-green:  0 0 15px rgba(5,150,105,.30);
+  --ds-glow-md-cyan:   0 0 15px rgba(2,132,199,.30);
+  --ds-glow-md-pink:   0 0 15px rgba(219,39,119,.30);
+  --ds-glow-md-orange: 0 0 15px rgba(234,88,12,.30);
+  --ds-glow-md-yellow: 0 0 15px rgba(217,119,6,.30);
+  --ds-glow-md-red:    0 0 15px rgba(225,29,72,.30);
+
+  /* ---- NEOBRUTALISM SHADOWS (lighter offset on light bg) ---- */
+  --ds-neu-sm:     2px 2px 0px 0px rgba(0,0,0,0.12);
+  --ds-neu:        4px 4px 0px 0px rgba(0,0,0,0.12);
+  --ds-neu-lg:     6px 6px 0px 0px rgba(0,0,0,0.12);
+  --ds-neu-purple: 4px 4px 0px 0px rgba(124,61,237,0.45);
+  --ds-neu-green:  4px 4px 0px 0px rgba(21,128,61,0.45);
+  --ds-neu-pink:   4px 4px 0px 0px rgba(219,39,119,0.45);
+  --ds-neu-cyan:   4px 4px 0px 0px rgba(8,145,178,0.45);
+  --ds-neu-orange: 4px 4px 0px 0px rgba(194,65,12,0.45);
+  --ds-neu-red:    4px 4px 0px 0px rgba(220,38,38,0.45);
+}
+
+/* ---- GLOBAL RESET ---- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+}
+
+body {
+  font-family: var(--ds-font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--ds-purple);
+  color: var(--ds-bg);
+}
+
+/* ---- SCROLLBAR ---- */
+*::-webkit-scrollbar       { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: var(--ds-bg); }
+*::-webkit-scrollbar-thumb { background: var(--ds-current); border-radius: 4px; }
+*::-webkit-scrollbar-thumb:hover { background: var(--ds-purple); }

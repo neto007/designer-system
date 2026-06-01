@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ShieldAI Design System</title>
+    <script>
+      // SPA routing fallback — redirect to index with hash-encoded path
+      var seg = window.location.pathname.split('/').slice(1)
+      var query = seg[0] === '' ? '' : '/?p=/' + seg.join('/') + window.location.search + window.location.hash
+      window.location.replace(window.location.origin + query)
+    </script>
+  </head>
+</html>

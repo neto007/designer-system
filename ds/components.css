@@ -1,0 +1,280 @@
+/* =============================================================
+   SHIELDAI · DESIGN SYSTEM · Component utility styles
+   Used by 02 Components, 03 Patterns, 04 Chat, 05 Workflow pages.
+   ============================================================= */
+
+@import url("./shell.css");
+
+/* ---------- BUTTONS (Dracula + Neobrutalism variants) ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; white-space: nowrap;
+  font-size: 14px; font-weight: 500;
+  border-radius: var(--ds-r-md);
+  height: 36px; padding: 0 16px;
+  transition: all var(--ds-dur-fast) var(--ds-ease-out);
+  border: none; background: transparent; color: var(--ds-fg);
+}
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ds-bg), 0 0 0 4px var(--ds-purple);
+}
+.btn[disabled] { opacity: .5; pointer-events: none; }
+.btn--sm { height: 32px; padding: 0 12px; font-size: 12px; }
+.btn--lg { height: 40px; padding: 0 32px; }
+.btn--icon { width: 36px; height: 36px; padding: 0; }
+
+/* Dracula variants (default app style) */
+.btn--default     { background: var(--ds-purple); color: black; box-shadow: var(--ds-glow-md-purple); }
+.btn--default:hover{ background: var(--ds-pink);   box-shadow: 0 0 20px rgba(255,121,198,.4); }
+.btn--secondary   { background: var(--ds-green);  color: black; box-shadow: var(--ds-glow-md-green); }
+.btn--destructive { background: var(--ds-red);    color: black; box-shadow: var(--ds-glow-md-red); }
+.btn--outline     { background: transparent; color: var(--ds-purple); border: 1px solid var(--ds-purple); }
+.btn--outline:hover { background: rgba(189,147,249,.1); }
+.btn--ghost       { color: var(--ds-fg); }
+.btn--ghost:hover { background: var(--ds-current); color: var(--ds-purple); }
+.btn--link        { color: var(--ds-purple); text-underline-offset: 4px; }
+.btn--link:hover  { text-decoration: underline; }
+
+/* NEOBRUTALISM variants — used in Folder/ApiKey dialogs, ChatInput, AgentExecutionView */
+.btn--neu {
+  background: var(--ds-panel);
+  color: var(--ds-fg);
+  border: 2px solid var(--ds-fg);
+  border-radius: var(--ds-r-lg);
+  box-shadow: var(--ds-neu);
+  font-weight: 700;
+  transition: transform var(--ds-dur-fast), box-shadow var(--ds-dur-fast);
+}
+.btn--neu:hover  { transform: translate(-1px,-1px); box-shadow: 5px 5px 0 0 #000; }
+.btn--neu:active { transform: translate(2px,2px);  box-shadow: 2px 2px 0 0 #000; }
+.btn--neu-purple { border-color: var(--ds-purple); box-shadow: var(--ds-neu-purple); color: var(--ds-purple); }
+.btn--neu-purple:hover  { box-shadow: 5px 5px 0 0 var(--ds-purple); }
+.btn--neu-purple:active { box-shadow: 2px 2px 0 0 var(--ds-purple); }
+.btn--neu-green  { border-color: var(--ds-green);  box-shadow: var(--ds-neu-green);  color: var(--ds-green); }
+.btn--neu-green:hover  { box-shadow: 5px 5px 0 0 var(--ds-green); }
+.btn--neu-green:active { box-shadow: 2px 2px 0 0 var(--ds-green); }
+.btn--neu-pink   { border-color: var(--ds-pink);   box-shadow: var(--ds-neu-pink);   color: var(--ds-pink); }
+.btn--neu-pink:hover  { box-shadow: 5px 5px 0 0 var(--ds-pink); }
+.btn--neu-pink:active { box-shadow: 2px 2px 0 0 var(--ds-pink); }
+
+/* ---------- INPUTS ---------- */
+.input, .textarea, .select-trigger {
+  width: 100%;
+  height: 40px;
+  border-radius: var(--ds-r-md);
+  border: 1px solid var(--ds-current);
+  background: var(--ds-bg);
+  padding: 0 12px;
+  font-size: 14px;
+  color: var(--ds-fg);
+  font-family: var(--ds-font-sans);
+  transition: all var(--ds-dur-fast);
+}
+.input::placeholder, .textarea::placeholder { color: var(--ds-comment); }
+.input:focus, .textarea:focus, .select-trigger:focus {
+  outline: none;
+  border-color: var(--ds-purple);
+  box-shadow: 0 0 0 2px rgba(189,147,249,.2);
+}
+.textarea { height: auto; padding: 10px 12px; resize: vertical; }
+.input--error { border-color: var(--ds-red); color: var(--ds-red); }
+
+/* neobrutalist input (used in FolderForm/ApiKeys) */
+.input--neu {
+  background: var(--ds-current);
+  border: 2px solid var(--ds-current);
+  border-radius: var(--ds-r-lg);
+  height: 40px;
+}
+.input--neu:focus {
+  border-color: var(--ds-green);
+  box-shadow: var(--ds-neu-green);
+}
+.input--neu-purple:focus { border-color: var(--ds-purple); box-shadow: var(--ds-neu-purple); }
+
+/* ---------- BADGES ---------- */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  border-radius: var(--ds-r-pill);
+  padding: 2px 10px;
+  font-size: 10px; font-weight: 900;
+  text-transform: uppercase; letter-spacing: 0.2em;
+  border: 1px solid transparent;
+  background: transparent;
+}
+.badge--green  { color: var(--ds-green);  border-color: var(--ds-green);  box-shadow: 0 0 8px rgba(80,250,123,.25); }
+.badge--purple { color: var(--ds-purple); border-color: var(--ds-purple); box-shadow: 0 0 8px rgba(189,147,249,.25); }
+.badge--yellow { color: var(--ds-yellow); border-color: var(--ds-yellow); box-shadow: 0 0 8px rgba(241,250,140,.25); }
+.badge--pink   { color: var(--ds-pink);   border-color: var(--ds-pink);   box-shadow: 0 0 8px rgba(255,121,198,.25); }
+.badge--orange { color: var(--ds-orange); border-color: var(--ds-orange); box-shadow: 0 0 8px rgba(255,184,108,.25); }
+.badge--cyan   { color: var(--ds-cyan);   border-color: var(--ds-cyan);   box-shadow: 0 0 8px rgba(139,233,253,.25); }
+.badge--red    { color: var(--ds-red);    border-color: var(--ds-red);    box-shadow: 0 0 8px rgba(255,85,85,.25); }
+.badge--muted  { color: var(--ds-comment); border-color: var(--ds-comment); }
+
+.badge--solid-green  { background: rgba(80,250,123,.15); border-color: transparent; }
+.badge--solid-red    { background: rgba(255,85,85,.15);  border-color: transparent; }
+.badge--solid-orange { background: rgba(255,184,108,.15);border-color: transparent; }
+
+.badge .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor;
+}
+
+/* ---------- DEMO GRIDS ---------- */
+.demo-grid {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+.demo-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* swatch */
+.swatch {
+  border: 1px solid var(--ds-current);
+  background: var(--ds-panel);
+  padding: 14px;
+  border-radius: var(--ds-r-md);
+}
+.swatch__chip {
+  aspect-ratio: 1;
+  border-radius: var(--ds-r-sm);
+  margin-bottom: 12px;
+}
+.swatch__name { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; }
+.swatch__hex  { font-family: var(--ds-font-mono); font-size: 11px; color: var(--ds-comment); margin-top: 4px; }
+.swatch__use  { font-size: 11px; color: var(--ds-comment); margin-top: 8px; }
+
+/* ---------- AVATAR ---------- */
+.avatar {
+  width: 40px; height: 40px; border-radius: var(--ds-r-pill);
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--ds-current); color: var(--ds-fg);
+  font-weight: 700; font-size: 14px;
+  border: 2px solid var(--ds-current);
+}
+.avatar--user { background: var(--ds-green); color: black; border-color: var(--ds-current); box-shadow: var(--ds-neu); }
+.avatar--bot  { background: var(--ds-panel); color: var(--ds-purple); border-color: var(--ds-purple); box-shadow: var(--ds-neu); }
+.avatar--tool { background: var(--ds-panel); color: var(--ds-orange); border-color: var(--ds-orange); box-shadow: var(--ds-neu); }
+.avatar--sm   { width: 28px; height: 28px; font-size: 11px; }
+.avatar--lg   { width: 56px; height: 56px; font-size: 18px; }
+
+/* ---------- TABS ---------- */
+.tabs {
+  display: inline-flex; gap: 4px;
+  background: var(--ds-current); padding: 4px;
+  border-radius: var(--ds-r-md);
+}
+.tab {
+  height: 32px; padding: 0 12px; border-radius: var(--ds-r-sm);
+  font-size: 13px; font-weight: 500; color: var(--ds-comment);
+  background: transparent; border: none;
+}
+.tab[data-active="true"] { background: var(--ds-bg); color: var(--ds-purple); }
+
+/* ---------- PROGRESS ---------- */
+.progress {
+  height: 4px; background: var(--ds-current); border-radius: var(--ds-r-pill); overflow: hidden;
+}
+.progress__bar { height: 100%; background: var(--ds-purple); box-shadow: 0 0 8px var(--ds-purple); }
+
+/* ---------- SKELETON ---------- */
+.skeleton {
+  background: linear-gradient(90deg, var(--ds-current) 0%, var(--ds-selection) 50%, var(--ds-current) 100%);
+  background-size: 200% 100%;
+  border-radius: var(--ds-r-sm);
+  animation: shimmer 1.6s linear infinite;
+}
+@keyframes shimmer { from { background-position: 200% 0 } to { background-position: -200% 0 } }
+
+/* ---------- TOAST ---------- */
+.toast {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--ds-panel); border: 1px solid var(--ds-current);
+  padding: 14px 16px; border-radius: var(--ds-r-md);
+  max-width: 360px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.6);
+}
+.toast--success { border-color: var(--ds-green); box-shadow: 0 8px 32px rgba(80,250,123,.15); }
+.toast--error   { border-color: var(--ds-red);   box-shadow: 0 8px 32px rgba(255,85,85,.15); }
+.toast--info    { border-color: var(--ds-cyan);  box-shadow: 0 8px 32px rgba(139,233,253,.15); }
+.toast__icon { flex-shrink: 0; margin-top: 2px; }
+.toast__title { font-weight: 700; font-size: 13px; }
+.toast__body  { font-size: 12px; color: var(--ds-comment); margin-top: 2px; }
+
+/* ---------- TOOLTIP ---------- */
+.tooltip {
+  display: inline-block;
+  padding: 6px 10px;
+  background: var(--ds-selection);
+  border: 1px solid var(--ds-current);
+  border-radius: var(--ds-r-sm);
+  font-size: 11px;
+  font-family: var(--ds-font-mono);
+  color: var(--ds-fg);
+  box-shadow: 0 4px 12px rgba(0,0,0,.5);
+}
+
+/* ---------- POPOVER / DROPDOWN ---------- */
+.popover {
+  background: var(--ds-panel);
+  border: 1px solid var(--ds-current);
+  border-radius: var(--ds-r-md);
+  padding: 6px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.6);
+  min-width: 200px;
+}
+.popover__item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border-radius: var(--ds-r-sm);
+  font-size: 12px; font-weight: 700;
+  color: var(--ds-fg);
+}
+.popover__item:hover { background: var(--ds-current); }
+.popover__item--danger { color: var(--ds-red); }
+.popover__item--danger:hover { background: rgba(255,85,85,.1); }
+.popover__sep { height: 1px; background: var(--ds-current); margin: 4px -6px; }
+
+/* ---------- ALERT ---------- */
+.alert {
+  border-left: 3px solid; padding: 12px 16px;
+  background: var(--ds-panel);
+  display: flex; gap: 12px; align-items: flex-start;
+  border-radius: 0 var(--ds-r-md) var(--ds-r-md) 0;
+}
+.alert--info    { border-color: var(--ds-cyan);   background: rgba(139,233,253,.05); }
+.alert--success { border-color: var(--ds-green);  background: rgba(80,250,123,.05); }
+.alert--warning { border-color: var(--ds-orange); background: rgba(255,184,108,.05); }
+.alert--error   { border-color: var(--ds-red);    background: rgba(255,85,85,.05); }
+
+/* ---------- DOs and DON'Ts ---------- */
+.do-block, .dont-block {
+  border: 1px solid; padding: 18px; border-radius: var(--ds-r-md);
+}
+.do-block   { border-color: rgba(80,250,123,.5); background: rgba(80,250,123,.05); }
+.dont-block { border-color: rgba(255,85,85,.5);  background: rgba(255,85,85,.05); }
+.do-block .head, .dont-block .head {
+  font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em;
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+}
+.do-block .head   { color: var(--ds-green); }
+.dont-block .head { color: var(--ds-red); }
+.do-block ul, .dont-block ul { list-style: none; padding: 0; margin: 0; }
+.do-block li, .dont-block li { font-size: 13px; padding: 4px 0; }
+
+/* ---------- NEU CARD ---------- */
+.neu-card {
+  border: 2px solid var(--ds-current);
+  background: var(--ds-panel);
+  border-radius: var(--ds-r-xl);
+  padding: 24px;
+  box-shadow: var(--ds-neu);
+}
+.neu-card--purple { border-color: var(--ds-purple); box-shadow: var(--ds-neu-purple); }
+.neu-card--green  { border-color: var(--ds-green);  box-shadow: var(--ds-neu-green);  }
+.neu-card--pink   { border-color: var(--ds-pink);   box-shadow: var(--ds-neu-pink);   }
+
+/* Workflow handles */
+.wf-handle {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--ds-bg); border: 2px solid currentColor;
+}

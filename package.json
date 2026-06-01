@@ -1,0 +1,29 @@
+{
+  "name": "shieldai-design-system",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm -C apps/docs dev",
+    "build": "pnpm -C apps/docs build",
+    "build:lib": "pnpm -C packages/core build",
+    "test": "pnpm -C packages/core test",
+    "lint": "eslint packages/core/src apps/docs/src --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0",
+    "typecheck": "tsc --noEmit --project packages/core/tsconfig.json && tsc --noEmit --project apps/docs/tsconfig.json"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "prettier": "^3.2.5",
+    "puppeteer": "^25.1.0",
+    "typescript": "^5.4.5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "puppeteer"
+    ]
+  }
+}

@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ShieldAI · Foundations</title>
+<link rel="stylesheet" href="ds/components.css" />
+</head>
+<body data-crumbs="foundations">
+<div id="ds-shell">
+
+  <!-- PAGE HEAD -->
+  <div class="ds-page-head">
+    <div>
+      <div class="kicker">// 01 · foundations</div>
+      <h1>Foundations</h1>
+      <p class="lede">The atomic layer of the system. Tokens here travel down to every component &mdash; change one and the surface reshapes itself.</p>
+    </div>
+    <div class="meta">
+      tokens · 62<br/>
+      css_vars · ./ds/tokens.css<br/>
+      tailwind · preset_available
+    </div>
+  </div>
+
+  <!-- SURFACES -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 01.01</span>
+      <h2>Surface scale</h2>
+      <div class="rule"></div>
+      <span class="tag">4 near-black tones · depth without gray</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:var(--ds-current); border:1px solid var(--ds-current)">
+      <div style="background:var(--ds-bg); padding:24px; aspect-ratio:5/3; display:flex; flex-direction:column; justify-content:space-between">
+        <span class="label" style="font-size:9px; color:var(--ds-comment)">ds-bg</span>
+        <div>
+          <div class="label">#050101</div>
+          <div class="mono" style="font-size:10px; color:var(--ds-comment); margin-top:4px">page · canvas · root</div>
+        </div>
+      </div>
+      <div style="background:var(--ds-panel); padding:24px; aspect-ratio:5/3; display:flex; flex-direction:column; justify-content:space-between">
+        <span class="label" style="font-size:9px; color:var(--ds-comment)">ds-panel</span>
+        <div>
+          <div class="label">#0b0b11</div>
+          <div class="mono" style="font-size:10px; color:var(--ds-comment); margin-top:4px">cards · dialogs · popovers</div>
+        </div>
+      </div>
+      <div style="background:var(--ds-current); padding:24px; aspect-ratio:5/3; display:flex; flex-direction:column; justify-content:space-between">
+        <span class="label" style="font-size:9px; color:var(--ds-comment)">ds-current</span>
+        <div>
+          <div class="label">#1a1b26</div>
+          <div class="mono" style="font-size:10px; color:var(--ds-comment); margin-top:4px">borders · hover · dividers</div>
+        </div>
+      </div>
+      <div style="background:var(--ds-selection); padding:24px; aspect-ratio:5/3; display:flex; flex-direction:column; justify-content:space-between">
+        <span class="label" style="font-size:9px; color:var(--ds-comment)">ds-selection</span>
+        <div>
+          <div class="label">#282a36</div>
+          <div class="mono" style="font-size:10px; color:var(--ds-comment); margin-top:4px">selection · raised · tooltip</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNAL PALETTE -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 01.02</span>
+      <h2>Signal palette</h2>
+      <div class="rule"></div>
+      <span class="tag">7 dracula neons · semantic, not decorative</span>
+    </div>
+
+    <div class="demo-grid" style="grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))">
+      <div class="swatch">
+        <div class="swatch__chip" style="background:var(--ds-purple); box-shadow: var(--ds-glow-md-purple)"></div>
+        <div class="swatch__name" style="color:var(--ds-purple)">ds-purple</div>
+        <div class="swatch__hex">#bd93f9</div>
+        <div class="swatch__use">primary · brand · LLM · A2A</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background:var(--ds-green); box-shadow: var(--ds-glow-md-green)"></div>
+        <div class="swatch__name" style="color:var(--ds-green)">ds-green</div>
+        <div class="swatch__hex">#50fa7b</div>
+        <div class="swatch__use">success · live · user · accent</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background:var(--ds-cyan); box-shadow: var(--ds-glow-md-cyan)"></div>
+        <div class="swatch__name" style="color:var(--ds-cyan)">ds-cyan</div>
+        <div class="swatch__hex">#8be9fd</div>
+        <div class="swatch__use">info · workflow · link</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background:var(--ds-pink); box-shadow: var(--ds-glow-md-pink)"></div>
+        <div class="swatch__name" style="color:var(--ds-pink)">ds-pink</div>
+        <div class="swatch__hex">#ff79c6</div>
+        <div class="swatch__use">hover · parallel</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background:var(--ds-orange); box-shadow: var(--ds-glow-md-orange)"></div>
+        <div class="swatch__name" style="color:var(--ds-orange)">ds-orange</div>
+        <div class="swatch__hex">#ffb86c</div>
+        <div class="swatch__use">warning · loop · tool</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background:var(--ds-yellow); box-shadow: var(--ds-glow-md-yellow)"></div>
+        <div class="swatch__name" style="color:var(--ds-yellow)">ds-yellow</div>
+        <div class="swatch__hex">#f1fa8c</div>
+        <div class="swatch__use">attention · sequential</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background:var(--ds-red); box-shadow: var(--ds-glow-md-red)"></div>
+        <div class="swatch__name" style="color:var(--ds-red)">ds-red</div>
+        <div class="swatch__hex">#ff5555</div>
+        <div class="swatch__use">destructive · task · alert</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background:var(--ds-comment)"></div>
+        <div class="swatch__name" style="color:var(--ds-comment)">ds-comment</div>
+        <div class="swatch__hex">#6272a4</div>
+        <div class="swatch__use">muted · labels · captions</div>
+      </div>
+    </div>
+
+    <!-- Do / Don't -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px">
+      <div class="do-block">
+        <div class="head"><span style="width:8px;height:8px;border-radius:50%;background:var(--ds-green)"></span> Do</div>
+        <ul>
+          <li>Use one neon per component to anchor its role.</li>
+          <li>Pair every neon with a glow shadow at ~35 % alpha.</li>
+          <li>Reserve <span class="mono" style="color:var(--ds-red)">ds-red</span> strictly for destructive and error states.</li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <div class="head"><span style="width:8px;height:8px;border-radius:50%;background:var(--ds-red)"></span> Don't</div>
+        <ul>
+          <li>Mix three or more neons inside a single card.</li>
+          <li>Use neon as a body-text background fill.</li>
+          <li>Tint surfaces above <span class="mono">ds-selection</span>. We stay near black.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 01.03</span>
+      <h2>Typography</h2>
+      <div class="rule"></div>
+      <span class="tag">system-ui · JetBrains Mono</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px">
+      <!-- Families -->
+      <div style="display:flex; flex-direction:column; gap:12px">
+        <div class="ds-card ds-card--padded">
+          <div style="display:flex; justify-content:space-between">
+            <span class="label" style="font-size:9px; color:var(--ds-comment)">family · sans</span>
+            <span class="mono" style="font-size:10px; color:var(--ds-comment)">system-ui, Helvetica, Arial</span>
+          </div>
+          <div style="font-size:44px; font-weight:900; letter-spacing:-.02em; margin-top:16px">Build agents that ship.</div>
+          <div class="muted" style="font-size:13px; margin-top:8px">Chrome, copy, anything the user reads as prose.</div>
+        </div>
+        <div class="ds-card ds-card--padded">
+          <div style="display:flex; justify-content:space-between">
+            <span class="label" style="font-size:9px; color:var(--ds-comment)">family · mono</span>
+            <span class="mono" style="font-size:10px; color:var(--ds-comment)">JetBrains Mono</span>
+          </div>
+          <div class="mono" style="font-size:22px; color:var(--ds-green); margin-top:16px">$ shieldai run --agent=evo_01</div>
+          <div class="muted" style="font-size:13px; margin-top:8px">Identifiers, ids, telemetry, code, CLI lines, timestamps.</div>
+        </div>
+        <div class="ds-card ds-card--padded">
+          <span class="label" style="font-size:9px; color:var(--ds-comment)">signature label treatment</span>
+          <div class="label" style="font-size:14px; margin-top:14px">Active_session</div>
+          <div class="label" style="font-size:10px; color:var(--ds-comment); margin-top:6px">Status · Online · 14ms</div>
+          <div class="muted" style="font-size:13px; margin-top:10px">All chrome labels are <span class="mono" style="color:var(--ds-purple)">font-black uppercase tracking-[0.2em]</span> at 9–14 px. This is the system's visual signature.</div>
+        </div>
+      </div>
+
+      <!-- Scale -->
+      <div class="ds-card">
+        <div style="padding:14px 20px; border-bottom:1px solid var(--ds-current); display:flex; justify-content:space-between">
+          <span class="label" style="font-size:9px; color:var(--ds-comment)">scale</span>
+          <span class="mono" style="font-size:10px; color:var(--ds-comment)">px / weight / tracking</span>
+        </div>
+        <div>
+          <div style="display:flex; align-items:flex-end; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--ds-current); gap:12px">
+            <div style="font-size:72px; line-height:1; font-weight:900; letter-spacing:-.02em">Aa</div>
+            <div style="text-align:right">
+              <div class="label" style="font-size:9px; color:var(--ds-purple)">Display</div>
+              <div class="mono" style="font-size:11px; color:var(--ds-comment)">72 · 900 · -.02em</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-end; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--ds-current)">
+            <div style="font-size:40px; line-height:1; font-weight:900; letter-spacing:-.02em">Headline</div>
+            <div style="text-align:right"><div class="label" style="font-size:9px; color:var(--ds-purple)">H1</div><div class="mono" style="font-size:11px; color:var(--ds-comment)">40 · 900</div></div>
+          </div>
+          <div style="display:flex; align-items:flex-end; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--ds-current)">
+            <div style="font-size:24px; line-height:1; font-weight:900; text-transform:uppercase">Section_title</div>
+            <div style="text-align:right"><div class="label" style="font-size:9px; color:var(--ds-purple)">H2</div><div class="mono" style="font-size:11px; color:var(--ds-comment)">24 · 900 · upper</div></div>
+          </div>
+          <div style="display:flex; align-items:flex-end; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--ds-current)">
+            <div class="label" style="font-size:14px">Card_title</div>
+            <div style="text-align:right"><div class="label" style="font-size:9px; color:var(--ds-purple)">Label · L</div><div class="mono" style="font-size:11px; color:var(--ds-comment)">14 · 900 · .2em</div></div>
+          </div>
+          <div style="display:flex; align-items:flex-end; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--ds-current)">
+            <div style="font-size:16px">Body sentence sits at 16 px with comfortable leading.</div>
+            <div style="text-align:right"><div class="label" style="font-size:9px; color:var(--ds-purple)">Body</div><div class="mono" style="font-size:11px; color:var(--ds-comment)">16 · 400 · 1.5</div></div>
+          </div>
+          <div style="display:flex; align-items:flex-end; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--ds-current)">
+            <div style="font-size:14px; color:var(--ds-comment)">Supporting caption for descriptions and metadata.</div>
+            <div style="text-align:right"><div class="label" style="font-size:9px; color:var(--ds-purple)">Caption</div><div class="mono" style="font-size:11px; color:var(--ds-comment)">14 · 400</div></div>
+          </div>
+          <div style="display:flex; align-items:flex-end; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--ds-current)">
+            <div class="label" style="font-size:10px; color:var(--ds-comment)">Micro_label</div>
+            <div style="text-align:right"><div class="label" style="font-size:9px; color:var(--ds-purple)">Label · S</div><div class="mono" style="font-size:11px; color:var(--ds-comment)">10 · 900 · .2em</div></div>
+          </div>
+          <div style="display:flex; align-items:flex-end; justify-content:space-between; padding:18px 20px">
+            <div class="mono" style="font-size:10px; color:var(--ds-green)">agt_01HRY8ZX2N · 14ms</div>
+            <div style="text-align:right"><div class="label" style="font-size:9px; color:var(--ds-purple)">Mono · S</div><div class="mono" style="font-size:11px; color:var(--ds-comment)">10 · 500</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPACING & RADIUS -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 01.04</span>
+      <h2>Spacing &amp; radius</h2>
+      <div class="rule"></div>
+      <span class="tag">4 px base · 4 radii</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px">
+      <div>
+        <span class="label" style="font-size:9px; color:var(--ds-comment); display:block; margin-bottom:12px">spacing scale</span>
+        <div class="ds-card" style="padding:16px">
+          <div style="display:flex; flex-direction:column; gap:10px">
+            <div style="display:flex; align-items:center; gap:12px"><span class="mono" style="font-size:11px; color:var(--ds-comment); width:60px">s-1 · 4</span><div style="width:4px; height:10px; background:var(--ds-purple)"></div></div>
+            <div style="display:flex; align-items:center; gap:12px"><span class="mono" style="font-size:11px; color:var(--ds-comment); width:60px">s-2 · 8</span><div style="width:8px; height:10px; background:var(--ds-purple)"></div></div>
+            <div style="display:flex; align-items:center; gap:12px"><span class="mono" style="font-size:11px; color:var(--ds-comment); width:60px">s-3 · 12</span><div style="width:12px; height:10px; background:var(--ds-purple)"></div></div>
+            <div style="display:flex; align-items:center; gap:12px"><span class="mono" style="font-size:11px; color:var(--ds-comment); width:60px">s-4 · 16</span><div style="width:16px; height:10px; background:var(--ds-purple)"></div></div>
+            <div style="display:flex; align-items:center; gap:12px"><span class="mono" style="font-size:11px; color:var(--ds-comment); width:60px">s-6 · 24</span><div style="width:24px; height:10px; background:var(--ds-purple)"></div></div>
+            <div style="display:flex; align-items:center; gap:12px"><span class="mono" style="font-size:11px; color:var(--ds-comment); width:60px">s-8 · 32</span><div style="width:32px; height:10px; background:var(--ds-purple)"></div></div>
+            <div style="display:flex; align-items:center; gap:12px"><span class="mono" style="font-size:11px; color:var(--ds-comment); width:60px">s-12 · 48</span><div style="width:48px; height:10px; background:var(--ds-purple)"></div></div>
+            <div style="display:flex; align-items:center; gap:12px"><span class="mono" style="font-size:11px; color:var(--ds-comment); width:60px">s-16 · 64</span><div style="width:64px; height:10px; background:var(--ds-purple)"></div></div>
+            <div style="display:flex; align-items:center; gap:12px"><span class="mono" style="font-size:11px; color:var(--ds-comment); width:60px">s-24 · 96</span><div style="width:96px; height:10px; background:var(--ds-purple)"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <span class="label" style="font-size:9px; color:var(--ds-comment); display:block; margin-bottom:12px">radius</span>
+        <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:8px">
+          <div class="ds-card" style="padding:14px; text-align:center"><div style="width:48px; height:48px; background:var(--ds-current); margin:0 auto"></div><div class="label" style="font-size:9px; margin-top:10px">none</div><div class="mono" style="font-size:10px; color:var(--ds-comment)">0</div></div>
+          <div class="ds-card" style="padding:14px; text-align:center"><div style="width:48px; height:48px; background:var(--ds-current); border-radius:2px; margin:0 auto"></div><div class="label" style="font-size:9px; margin-top:10px">sm</div><div class="mono" style="font-size:10px; color:var(--ds-comment)">2</div></div>
+          <div class="ds-card" style="padding:14px; text-align:center"><div style="width:48px; height:48px; background:var(--ds-current); border-radius:4px; margin:0 auto"></div><div class="label" style="font-size:9px; margin-top:10px">md</div><div class="mono" style="font-size:10px; color:var(--ds-comment)">4</div></div>
+          <div class="ds-card" style="padding:14px; text-align:center"><div style="width:48px; height:48px; background:var(--ds-current); border-radius:8px; margin:0 auto"></div><div class="label" style="font-size:9px; margin-top:10px">lg</div><div class="mono" style="font-size:10px; color:var(--ds-comment)">8</div></div>
+          <div class="ds-card" style="padding:14px; text-align:center"><div style="width:48px; height:48px; background:var(--ds-current); border-radius:16px; margin:0 auto"></div><div class="label" style="font-size:9px; margin-top:10px">2xl</div><div class="mono" style="font-size:10px; color:var(--ds-comment)">16</div></div>
+        </div>
+        <div class="mono" style="font-size:11px; color:var(--ds-comment); margin-top:12px">// default <span style="color:var(--ds-purple)">md (4)</span> · cards <span style="color:var(--ds-purple)">lg (8)</span> · neu surfaces <span style="color:var(--ds-purple)">xl–2xl (12–16)</span> · pills <span style="color:var(--ds-purple)">9999</span> reserved for badges</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOW + NEOBRUTALISM (both shadows side by side) -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 01.05</span>
+      <h2>Elevation</h2>
+      <div class="rule"></div>
+      <span class="tag">two shadow systems · glow + neobrutal</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px">
+      <!-- GLOW -->
+      <div>
+        <span class="label" style="font-size:9px; color:var(--ds-purple); display:block; margin-bottom:12px">// glow_scale (soft signal)</span>
+        <div class="ds-card">
+          <div style="padding:18px; border-bottom:1px solid var(--ds-current); display:flex; align-items:center; gap:20px">
+            <div style="width:56px; height:56px; border-radius:4px; background:var(--ds-purple); box-shadow:0 0 8px rgba(189,147,249,.3)"></div>
+            <div style="flex:1"><div class="label" style="font-size:10px">glow-sm</div><div class="mono" style="font-size:11px; color:var(--ds-comment)">0 0 8px alpha:.30</div></div>
+            <div class="mono" style="font-size:10px; color:var(--ds-comment)">subtle</div>
+          </div>
+          <div style="padding:18px; border-bottom:1px solid var(--ds-current); display:flex; align-items:center; gap:20px">
+            <div style="width:56px; height:56px; border-radius:4px; background:var(--ds-purple); box-shadow:var(--ds-glow-md-purple)"></div>
+            <div style="flex:1"><div class="label" style="font-size:10px">glow-md</div><div class="mono" style="font-size:11px; color:var(--ds-comment)">0 0 15px alpha:.35</div></div>
+            <div class="mono" style="font-size:10px; color:var(--ds-comment)">default</div>
+          </div>
+          <div style="padding:18px; border-bottom:1px solid var(--ds-current); display:flex; align-items:center; gap:20px">
+            <div style="width:56px; height:56px; border-radius:4px; background:var(--ds-purple); box-shadow:var(--ds-glow-lg-purple)"></div>
+            <div style="flex:1"><div class="label" style="font-size:10px">glow-lg</div><div class="mono" style="font-size:11px; color:var(--ds-comment)">0 0 25px alpha:.55</div></div>
+            <div class="mono" style="font-size:10px; color:var(--ds-comment)">hover</div>
+          </div>
+          <div style="padding:18px; display:flex; align-items:center; gap:20px">
+            <div style="width:56px; height:56px; border-radius:4px; background:var(--ds-purple); box-shadow:var(--ds-glow-xl-purple)"></div>
+            <div style="flex:1"><div class="label" style="font-size:10px">glow-xl</div><div class="mono" style="font-size:11px; color:var(--ds-comment)">0 0 40px + inset</div></div>
+            <div class="mono" style="font-size:10px; color:var(--ds-comment)">focus · hero</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEOBRUTALISM -->
+      <div>
+        <span class="label" style="font-size:9px; color:var(--ds-purple); display:block; margin-bottom:12px">// neobrutalism (hard offset · tactile)</span>
+        <div class="ds-card" style="padding:24px">
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-bottom:24px">
+            <div style="text-align:center">
+              <div style="width:64px; height:64px; background:var(--ds-panel); border:2px solid var(--ds-fg); margin:0 auto 24px; border-radius:8px; box-shadow:var(--ds-neu-sm)"></div>
+              <div class="label" style="font-size:9px">neu-sm</div>
+              <div class="mono" style="font-size:10px; color:var(--ds-comment)">2px 2px 0 0</div>
+            </div>
+            <div style="text-align:center">
+              <div style="width:64px; height:64px; background:var(--ds-panel); border:2px solid var(--ds-fg); margin:0 auto 24px; border-radius:8px; box-shadow:var(--ds-neu)"></div>
+              <div class="label" style="font-size:9px">neu</div>
+              <div class="mono" style="font-size:10px; color:var(--ds-comment)">4px 4px 0 0</div>
+            </div>
+            <div style="text-align:center">
+              <div style="width:64px; height:64px; background:var(--ds-panel); border:2px solid var(--ds-fg); margin:0 auto 24px; border-radius:8px; box-shadow:var(--ds-neu-lg)"></div>
+              <div class="label" style="font-size:9px">neu-lg</div>
+              <div class="mono" style="font-size:10px; color:var(--ds-comment)">6px 6px 0 0</div>
+            </div>
+          </div>
+
+          <span class="label" style="font-size:9px; color:var(--ds-comment); display:block; margin:8px 0 12px">colored neu (used as focus state for inputs)</span>
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px">
+            <div style="text-align:center">
+              <div style="width:64px; height:64px; background:var(--ds-panel); border:2px solid var(--ds-purple); margin:0 auto 16px; border-radius:8px; box-shadow:var(--ds-neu-purple)"></div>
+              <div class="label" style="font-size:9px; color:var(--ds-purple)">neu-purple</div>
+            </div>
+            <div style="text-align:center">
+              <div style="width:64px; height:64px; background:var(--ds-panel); border:2px solid var(--ds-green); margin:0 auto 16px; border-radius:8px; box-shadow:var(--ds-neu-green)"></div>
+              <div class="label" style="font-size:9px; color:var(--ds-green)">neu-green</div>
+            </div>
+            <div style="text-align:center">
+              <div style="width:64px; height:64px; background:var(--ds-panel); border:2px solid var(--ds-pink); margin:0 auto 16px; border-radius:8px; box-shadow:var(--ds-neu-pink)"></div>
+              <div class="label" style="font-size:9px; color:var(--ds-pink)">neu-pink</div>
+            </div>
+          </div>
+
+          <div class="mono" style="font-size:11px; color:var(--ds-comment); margin-top:24px; line-height:1.6">
+            // box-shadow: 4px 4px 0px 0px #color · no blur · always solid<br/>
+            // press_state: translate(2px,2px) + 2px 2px 0 0<br/>
+            // hover_state: translate(-1px,-1px) + 5px 5px 0 0
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- when to use -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px">
+      <div class="alert alert--info"><div><div class="label" style="font-size:10px; color:var(--ds-cyan)">// use_glow when</div><div style="font-size:13px; margin-top:4px">Communicating <strong>live</strong> state &mdash; agent running, websocket open, active nav. Use it on primary buttons, status dots, focused chrome.</div></div></div>
+      <div class="alert alert--info"><div><div class="label" style="font-size:10px; color:var(--ds-cyan)">// use_neu when</div><div style="font-size:13px; margin-top:4px">Communicating <strong>commitment</strong> &mdash; "you can click this and it does something heavy". Dialogs, save buttons, chat bubbles, configuration forms.</div></div></div>
+    </div>
+  </section>
+
+  <!-- MOTION -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 01.06</span>
+      <h2>Motion</h2>
+      <div class="rule"></div>
+      <span class="tag">prefers-reduced-motion respected</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns: 2fr 1fr; gap:24px">
+      <div class="ds-card" style="padding:20px">
+        <div style="display:grid; grid-template-columns: 200px 1fr 1fr; gap:20px; align-items:center; padding:10px 0; border-bottom:1px solid var(--ds-current)">
+          <div class="label" style="font-size:11px">fast</div>
+          <div class="mono" style="font-size:12px; color:var(--ds-comment)">150ms · ease-out</div>
+          <div class="mono" style="font-size:11px; color:var(--ds-purple)">hover · focus · tabs</div>
+        </div>
+        <div style="display:grid; grid-template-columns: 200px 1fr 1fr; gap:20px; align-items:center; padding:10px 0; border-bottom:1px solid var(--ds-current)">
+          <div class="label" style="font-size:11px">default</div>
+          <div class="mono" style="font-size:12px; color:var(--ds-comment)">200ms · ease-out</div>
+          <div class="mono" style="font-size:11px; color:var(--ds-purple)">dropdown · popover</div>
+        </div>
+        <div style="display:grid; grid-template-columns: 200px 1fr 1fr; gap:20px; align-items:center; padding:10px 0; border-bottom:1px solid var(--ds-current)">
+          <div class="label" style="font-size:11px">slow</div>
+          <div class="mono" style="font-size:12px; color:var(--ds-comment)">300ms · ease</div>
+          <div class="mono" style="font-size:11px; color:var(--ds-purple)">dialog · sheet</div>
+        </div>
+        <div style="display:grid; grid-template-columns: 200px 1fr 1fr; gap:20px; align-items:center; padding:10px 0; border-bottom:1px solid var(--ds-current)">
+          <div class="label" style="font-size:11px">spring</div>
+          <div class="mono" style="font-size:12px; color:var(--ds-comment)">cubic-bezier(.34,1.56,.64,1)</div>
+          <div class="mono" style="font-size:11px; color:var(--ds-purple)">toast · neu press</div>
+        </div>
+        <div style="display:grid; grid-template-columns: 200px 1fr 1fr; gap:20px; align-items:center; padding:10px 0; border-bottom:1px solid var(--ds-current)">
+          <div class="label" style="font-size:11px">pulse</div>
+          <div class="mono" style="font-size:12px; color:var(--ds-comment)">1.5s · infinite</div>
+          <div class="mono" style="font-size:11px; color:var(--ds-purple)">live dots · skeleton</div>
+        </div>
+        <div style="display:grid; grid-template-columns: 200px 1fr 1fr; gap:20px; align-items:center; padding:10px 0">
+          <div class="label" style="font-size:11px">wiggle / squash</div>
+          <div class="mono" style="font-size:12px; color:var(--ds-comment)">1s · infinite / 200ms</div>
+          <div class="mono" style="font-size:11px; color:var(--ds-purple)">empty state · button press</div>
+        </div>
+      </div>
+
+      <div class="ds-card" style="padding:20px">
+        <div class="label" style="font-size:9px; color:var(--ds-comment)">// guardrails</div>
+        <ul style="margin:14px 0 0; padding:0; list-style:none; font-size:13px">
+          <li style="padding:6px 0; border-bottom:1px solid var(--ds-current)"><span class="mono" style="color:var(--ds-green)">&gt;</span> Never animate more than 2 properties at once.</li>
+          <li style="padding:6px 0; border-bottom:1px solid var(--ds-current)"><span class="mono" style="color:var(--ds-green)">&gt;</span> Respect <span class="mono" style="color:var(--ds-purple)">@media (prefers-reduced-motion)</span>.</li>
+          <li style="padding:6px 0; border-bottom:1px solid var(--ds-current)"><span class="mono" style="color:var(--ds-green)">&gt;</span> No bounces longer than 300 ms.</li>
+          <li style="padding:6px 0"><span class="mono" style="color:var(--ds-green)">&gt;</span> Pulse only on truly live state.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Z-INDEX & BREAKPOINTS -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 01.07</span>
+      <h2>Layers &amp; breakpoints</h2>
+      <div class="rule"></div>
+      <span class="tag">stacking order · responsive scale</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px">
+      <div>
+        <span class="label" style="font-size:9px; color:var(--ds-comment); display:block; margin-bottom:12px">z-index scale</span>
+        <div class="ds-card" style="overflow:hidden">
+          <div style="display:grid; grid-template-columns:60px 1fr 100px; padding:10px 16px; border-bottom:1px solid var(--ds-current); background:var(--ds-bg)">
+            <span class="label" style="font-size:9px; color:var(--ds-comment)">level</span>
+            <span class="label" style="font-size:9px; color:var(--ds-comment)">layer</span>
+            <span class="label" style="font-size:9px; color:var(--ds-comment); text-align:right">z</span>
+          </div>
+          <div style="display:grid; grid-template-columns:60px 1fr 100px; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center"><span class="mono" style="font-size:11px">100</span><span style="font-size:13px">tooltip</span><span class="mono" style="font-size:11px; text-align:right; color:var(--ds-purple)">--ds-z-tooltip</span></div>
+          <div style="display:grid; grid-template-columns:60px 1fr 100px; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center"><span class="mono" style="font-size:11px">90</span><span style="font-size:13px">toast</span><span class="mono" style="font-size:11px; text-align:right; color:var(--ds-purple)">--ds-z-toast</span></div>
+          <div style="display:grid; grid-template-columns:60px 1fr 100px; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center"><span class="mono" style="font-size:11px">80</span><span style="font-size:13px">modal · dialog</span><span class="mono" style="font-size:11px; text-align:right; color:var(--ds-purple)">--ds-z-modal</span></div>
+          <div style="display:grid; grid-template-columns:60px 1fr 100px; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center"><span class="mono" style="font-size:11px">70</span><span style="font-size:13px">overlay · backdrop</span><span class="mono" style="font-size:11px; text-align:right; color:var(--ds-purple)">--ds-z-overlay</span></div>
+          <div style="display:grid; grid-template-columns:60px 1fr 100px; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center"><span class="mono" style="font-size:11px">60</span><span style="font-size:13px">sticky header</span><span class="mono" style="font-size:11px; text-align:right; color:var(--ds-purple)">--ds-z-sticky</span></div>
+          <div style="display:grid; grid-template-columns:60px 1fr 100px; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center"><span class="mono" style="font-size:11px">50</span><span style="font-size:13px">dropdown · popover</span><span class="mono" style="font-size:11px; text-align:right; color:var(--ds-purple)">--ds-z-dropdown</span></div>
+          <div style="display:grid; grid-template-columns:60px 1fr 100px; padding:12px 16px; align-items:center"><span class="mono" style="font-size:11px">1</span><span style="font-size:13px">base content</span><span class="mono" style="font-size:11px; text-align:right; color:var(--ds-purple)">--ds-z-base</span></div>
+        </div>
+      </div>
+
+      <div>
+        <span class="label" style="font-size:9px; color:var(--ds-comment); display:block; margin-bottom:12px">breakpoints</span>
+        <div class="ds-card">
+          <div style="display:grid; grid-template-columns:80px 1fr 1fr; padding:10px 16px; border-bottom:1px solid var(--ds-current); background:var(--ds-bg)">
+            <span class="label" style="font-size:9px; color:var(--ds-comment)">key</span>
+            <span class="label" style="font-size:9px; color:var(--ds-comment)">min-width</span>
+            <span class="label" style="font-size:9px; color:var(--ds-comment)">use</span>
+          </div>
+          <div style="display:grid; grid-template-columns:80px 1fr 1fr; padding:12px 16px; border-bottom:1px solid var(--ds-current)"><span class="mono" style="font-size:11px">sm</span><span class="mono" style="font-size:11px; color:var(--ds-comment)">640px</span><span style="font-size:12px">phones landscape</span></div>
+          <div style="display:grid; grid-template-columns:80px 1fr 1fr; padding:12px 16px; border-bottom:1px solid var(--ds-current)"><span class="mono" style="font-size:11px">md</span><span class="mono" style="font-size:11px; color:var(--ds-comment)">768px</span><span style="font-size:12px">tablets</span></div>
+          <div style="display:grid; grid-template-columns:80px 1fr 1fr; padding:12px 16px; border-bottom:1px solid var(--ds-current)"><span class="mono" style="font-size:11px">lg</span><span class="mono" style="font-size:11px; color:var(--ds-comment)">1024px</span><span style="font-size:12px">laptop · primary</span></div>
+          <div style="display:grid; grid-template-columns:80px 1fr 1fr; padding:12px 16px; border-bottom:1px solid var(--ds-current)"><span class="mono" style="font-size:11px">xl</span><span class="mono" style="font-size:11px; color:var(--ds-comment)">1280px</span><span style="font-size:12px">workstation</span></div>
+          <div style="display:grid; grid-template-columns:80px 1fr 1fr; padding:12px 16px"><span class="mono" style="font-size:11px">2xl</span><span class="mono" style="font-size:11px; color:var(--ds-comment)">1536px</span><span style="font-size:12px">large monitors</span></div>
+        </div>
+
+        <span class="label" style="font-size:9px; color:var(--ds-comment); display:block; margin:20px 0 12px">layout containers</span>
+        <div class="ds-card" style="padding:16px">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--ds-current)"><span class="mono" style="font-size:11px">header_h</span><span class="mono" style="font-size:11px; color:var(--ds-purple)">64 px</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--ds-current)"><span class="mono" style="font-size:11px">sidebar_w</span><span class="mono" style="font-size:11px; color:var(--ds-purple)">260 px</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0"><span class="mono" style="font-size:11px">max_content_w</span><span class="mono" style="font-size:11px; color:var(--ds-purple)">1280 px</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ICONOGRAPHY -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 01.08</span>
+      <h2>Iconography</h2>
+      <div class="rule"></div>
+      <span class="tag">lucide-react · 1.5–2 px stroke</span>
+    </div>
+
+    <div class="ds-card" style="padding:24px">
+      <div style="display:grid; grid-template-columns:repeat(8, 1fr); gap:8px">
+        <!-- 16 representative icons -->
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">cpu</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">bot</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">chat</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">server</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">zap</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">db</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V2"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">flask</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">search</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">key</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">user</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="9" y="15" width="6" height="6" rx="1"/><path d="M6 9v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">workflow</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">refresh</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">file</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">check</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">x</span></div>
+        <div style="aspect-ratio:1; border:1px solid var(--ds-current); background:var(--ds-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><span class="mono" style="font-size:9px; color:var(--ds-comment)">arrow</span></div>
+      </div>
+      <div class="mono" style="font-size:11px; color:var(--ds-comment); margin-top:20px; line-height:1.7">
+        // source: <span style="color:var(--ds-purple)">lucide-react</span><br/>
+        // stroke-width: 1.5 (chrome 14–16) · 2 (inline 16–20) · 2.5 (emphasis ≥22)<br/>
+        // color: always inherit `currentColor`
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="ds/shell.js"></script>
+</body>
+</html>

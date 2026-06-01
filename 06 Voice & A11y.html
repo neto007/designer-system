@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ShieldAI · Voice &amp; A11y</title>
+<link rel="stylesheet" href="ds/components.css" />
+</head>
+<body data-crumbs="voice &amp; a11y">
+<div id="ds-shell">
+
+  <div class="ds-page-head">
+    <div>
+      <div class="kicker">// 06 · guidelines</div>
+      <h1>Voice &amp; A11y</h1>
+      <p class="lede">How the system speaks &mdash; and how it stays usable by anyone. Two halves of the same coin: every label is shorter, every screen reaches AA contrast.</p>
+    </div>
+    <div class="meta">
+      voice · 5 principles<br/>
+      contrast · WCAG_AA<br/>
+      focus · always_visible
+    </div>
+  </div>
+
+  <!-- VOICE PRINCIPLES -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 06.01</span>
+      <h2>Voice principles</h2>
+      <div class="rule"></div>
+      <span class="tag">terminal · precise · zero fluff</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px">
+      <div class="ds-card ds-card--padded">
+        <div class="mono" style="color:var(--ds-purple); font-size:11px">01</div>
+        <h3 class="label" style="font-size:13px; margin:8px 0 6px">Talk_like_a_terminal</h3>
+        <p class="muted" style="font-size:13px; margin:0">Senior engineer mid-debug. <span class="mono" style="color:var(--ds-purple)">snake_case</span> identifiers, mono ids, prefixed verbs.</p>
+      </div>
+      <div class="ds-card ds-card--padded">
+        <div class="mono" style="color:var(--ds-green); font-size:11px">02</div>
+        <h3 class="label" style="font-size:13px; margin:8px 0 6px">Verbs_over_features</h3>
+        <p class="muted" style="font-size:13px; margin:0"><span class="mono" style="color:var(--ds-green)">Create_agent</span>, not "Agent management". <span class="mono" style="color:var(--ds-green)">Run</span>, not "Execute action".</p>
+      </div>
+      <div class="ds-card ds-card--padded">
+        <div class="mono" style="color:var(--ds-cyan); font-size:11px">03</div>
+        <h3 class="label" style="font-size:13px; margin:8px 0 6px">Errors_state_then_fix</h3>
+        <p class="muted" style="font-size:13px; margin:0">Name what failed, then how to recover. Never apologise; never speculate.</p>
+      </div>
+      <div class="ds-card ds-card--padded">
+        <div class="mono" style="color:var(--ds-pink); font-size:11px">04</div>
+        <h3 class="label" style="font-size:13px; margin:8px 0 6px">No_excitement</h3>
+        <p class="muted" style="font-size:13px; margin:0">No exclamation marks. No emoji. No "Oops!" or "Yay!". The system is a tool, not a friend.</p>
+      </div>
+      <div class="ds-card ds-card--padded">
+        <div class="mono" style="color:var(--ds-orange); font-size:11px">05</div>
+        <h3 class="label" style="font-size:13px; margin:8px 0 6px">Numbers_are_data</h3>
+        <p class="muted" style="font-size:13px; margin:0">Always show units, currency, and precision. <span class="mono" style="color:var(--ds-orange)">412 ms</span> beats "fast".</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MICROCOPY -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 06.02</span>
+      <h2>Microcopy library</h2>
+      <div class="rule"></div>
+      <span class="tag">replace generic strings · use these</span>
+    </div>
+
+    <div class="ds-card" style="overflow:hidden">
+      <div style="display:grid; grid-template-columns:60px 1fr 1fr; padding:10px 16px; background:var(--ds-bg); border-bottom:1px solid var(--ds-current)">
+        <span class="label" style="font-size:9px; color:var(--ds-comment)">role</span>
+        <span class="label" style="font-size:9px; color:var(--ds-comment)">generic</span>
+        <span class="label" style="font-size:9px; color:var(--ds-comment)">shieldai</span>
+      </div>
+
+      <div style="display:grid; grid-template-columns:60px 1fr 1fr; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center">
+        <span class="mono" style="font-size:11px; color:var(--ds-comment)">cta</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-comment); text-decoration:line-through">Get started</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-green)">+ Create_agent</span>
+      </div>
+      <div style="display:grid; grid-template-columns:60px 1fr 1fr; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center">
+        <span class="mono" style="font-size:11px; color:var(--ds-comment)">cta</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-comment); text-decoration:line-through">Save changes</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-green)">Commit_changes</span>
+      </div>
+      <div style="display:grid; grid-template-columns:60px 1fr 1fr; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center">
+        <span class="mono" style="font-size:11px; color:var(--ds-comment)">empty</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-comment); text-decoration:line-through">No items yet</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-green)">No_agents_yet</span>
+      </div>
+      <div style="display:grid; grid-template-columns:60px 1fr 1fr; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center">
+        <span class="mono" style="font-size:11px; color:var(--ds-comment)">confirm</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-comment); text-decoration:line-through">Are you sure?</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-green)">Confirm_delete · cannot_undo</span>
+      </div>
+      <div style="display:grid; grid-template-columns:60px 1fr 1fr; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center">
+        <span class="mono" style="font-size:11px; color:var(--ds-comment)">loading</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-comment); text-decoration:line-through">Loading...</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-green)">Fetching_agents · 23</span>
+      </div>
+      <div style="display:grid; grid-template-columns:60px 1fr 1fr; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center">
+        <span class="mono" style="font-size:11px; color:var(--ds-comment)">success</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-comment); text-decoration:line-through">Done!</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-green)">Agent_deployed · agt_01HRY8ZX2N</span>
+      </div>
+      <div style="display:grid; grid-template-columns:60px 1fr 1fr; padding:12px 16px; align-items:center">
+        <span class="mono" style="font-size:11px; color:var(--ds-comment)">error</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-comment); text-decoration:line-through">Something went wrong</span>
+        <span class="mono" style="font-size:12px; color:var(--ds-red)">// ERR_INVALID_API_KEY · check Profile_→_Keys</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ERROR FORMAT -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 06.03</span>
+      <h2>Error message format</h2>
+      <div class="rule"></div>
+      <span class="tag">code · what · how</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px">
+      <div class="ds-frame">
+        <span class="ds-frame__label">anatomy</span>
+        <div style="padding-top:14px">
+          <div class="alert alert--error">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ds-red)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <div style="flex:1">
+              <div class="label" style="font-size:11px; color:var(--ds-red)">// ERR_INVALID_API_KEY <span style="color:var(--ds-comment); font-weight:400">← code</span></div>
+              <div style="font-size:13px; margin-top:4px">API key must start with <span class="mono" style="color:var(--ds-purple)">sk-</span>. <span style="color:var(--ds-comment); font-size:11px">← what</span></div>
+              <div style="font-size:13px; margin-top:2px">Generate one in <span class="mono" style="color:var(--ds-purple)">Profile → Keys</span>. <span style="color:var(--ds-comment); font-size:11px">← how</span></div>
+            </div>
+          </div>
+          <pre class="ds-code" style="margin-top:12px"><span class="c">// template</span>
+{
+  <span class="a">"code"</span>: <span class="s">"ERR_*"</span>,
+  <span class="a">"what"</span>: <span class="s">"single sentence, present tense"</span>,
+  <span class="a">"how"</span>:  <span class="s">"single sentence, imperative"</span>
+}</pre>
+        </div>
+      </div>
+
+      <div class="ds-frame">
+        <span class="ds-frame__label">examples</span>
+        <div style="display:flex; flex-direction:column; gap:10px; padding-top:14px">
+          <div class="alert alert--warning">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ds-orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+            <div><div class="label" style="font-size:11px; color:var(--ds-orange)">// WARN_RATE_LIMIT</div><div style="font-size:13px; margin-top:2px">60 req/min limit reached. Retry in <span class="mono">3 s</span>.</div></div>
+          </div>
+          <div class="alert alert--error">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ds-red)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
+            <div><div class="label" style="font-size:11px; color:var(--ds-red)">// ERR_MCP_UNREACHABLE</div><div style="font-size:13px; margin-top:2px">MCP server at <span class="mono">:8080</span> did not respond. Verify the host is running and reachable.</div></div>
+          </div>
+          <div class="alert alert--info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ds-cyan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
+            <div><div class="label" style="font-size:11px; color:var(--ds-cyan)">// INFO_AGENT_PAUSED</div><div style="font-size:13px; margin-top:2px">Agent paused for the next 5 min. Resume from the agent's <span class="mono">overview</span> tab.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DO / DON'T -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 06.04</span>
+      <h2>Tone in practice</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+      <div class="do-block">
+        <div class="head"><span style="width:8px;height:8px;border-radius:50%;background:var(--ds-green)"></span> Do · write_this_way</div>
+        <ul>
+          <li>&gt; <span class="mono" style="color:var(--ds-green)">Agent_deleted · agt_01HRY8ZX2N removed</span></li>
+          <li>&gt; <span class="mono" style="color:var(--ds-green)">12_tools_attached · 4 require approval</span></li>
+          <li>&gt; <span class="mono" style="color:var(--ds-green)">Connection_failed · check MCP server at :8080</span></li>
+          <li>&gt; <span class="mono" style="color:var(--ds-green)">Run_complete · 47 records · 412 ms</span></li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <div class="head"><span style="width:8px;height:8px;border-radius:50%;background:var(--ds-red)"></span> Don't · sound_like_marketing</div>
+        <ul>
+          <li>&gt; <span class="mono" style="color:var(--ds-red)">"Wow! Your agent is ready 🎉"</span></li>
+          <li>&gt; <span class="mono" style="color:var(--ds-red)">"Unleash the power of AI orchestration!"</span></li>
+          <li>&gt; <span class="mono" style="color:var(--ds-red)">"Oops! Something went wrong."</span></li>
+          <li>&gt; <span class="mono" style="color:var(--ds-red)">"We're sorry, please try again later."</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESSIBILITY -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 06.05</span>
+      <h2>Accessibility</h2>
+      <div class="rule"></div>
+      <span class="tag">WCAG 2.2 · target AA</span>
+    </div>
+
+    <!-- contrast table -->
+    <span class="label" style="font-size:9px; color:var(--ds-comment); display:block; margin-bottom:10px">contrast on ds-bg (#050101)</span>
+    <div class="ds-card" style="overflow:hidden; margin-bottom:24px">
+      <div style="display:grid; grid-template-columns:1fr 1fr 100px 80px 80px; padding:10px 16px; background:var(--ds-bg); border-bottom:1px solid var(--ds-current)">
+        <span class="label" style="font-size:9px; color:var(--ds-comment)">token</span>
+        <span class="label" style="font-size:9px; color:var(--ds-comment)">sample</span>
+        <span class="label" style="font-size:9px; color:var(--ds-comment); text-align:right">ratio</span>
+        <span class="label" style="font-size:9px; color:var(--ds-comment); text-align:center">AA</span>
+        <span class="label" style="font-size:9px; color:var(--ds-comment); text-align:center">AAA</span>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 100px 80px 80px; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center"><span class="mono" style="font-size:11px">ds-fg</span><span style="color:var(--ds-fg); font-size:14px">Foreground text</span><span class="mono" style="font-size:11px; color:var(--ds-comment); text-align:right">18.6 : 1</span><span style="text-align:center; color:var(--ds-green)">✓</span><span style="text-align:center; color:var(--ds-green)">✓</span></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 100px 80px 80px; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center"><span class="mono" style="font-size:11px">ds-purple</span><span style="color:var(--ds-purple); font-size:14px">primary · brand</span><span class="mono" style="font-size:11px; color:var(--ds-comment); text-align:right">9.4 : 1</span><span style="text-align:center; color:var(--ds-green)">✓</span><span style="text-align:center; color:var(--ds-green)">✓</span></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 100px 80px 80px; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center"><span class="mono" style="font-size:11px">ds-green</span><span style="color:var(--ds-green); font-size:14px">success</span><span class="mono" style="font-size:11px; color:var(--ds-comment); text-align:right">14.1 : 1</span><span style="text-align:center; color:var(--ds-green)">✓</span><span style="text-align:center; color:var(--ds-green)">✓</span></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 100px 80px 80px; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center"><span class="mono" style="font-size:11px">ds-cyan</span><span style="color:var(--ds-cyan); font-size:14px">info</span><span class="mono" style="font-size:11px; color:var(--ds-comment); text-align:right">14.4 : 1</span><span style="text-align:center; color:var(--ds-green)">✓</span><span style="text-align:center; color:var(--ds-green)">✓</span></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 100px 80px 80px; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center"><span class="mono" style="font-size:11px">ds-yellow</span><span style="color:var(--ds-yellow); font-size:14px">attention</span><span class="mono" style="font-size:11px; color:var(--ds-comment); text-align:right">17.7 : 1</span><span style="text-align:center; color:var(--ds-green)">✓</span><span style="text-align:center; color:var(--ds-green)">✓</span></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 100px 80px 80px; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center"><span class="mono" style="font-size:11px">ds-orange</span><span style="color:var(--ds-orange); font-size:14px">warning</span><span class="mono" style="font-size:11px; color:var(--ds-comment); text-align:right">10.8 : 1</span><span style="text-align:center; color:var(--ds-green)">✓</span><span style="text-align:center; color:var(--ds-green)">✓</span></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 100px 80px 80px; padding:12px 16px; border-bottom:1px solid var(--ds-current); align-items:center"><span class="mono" style="font-size:11px">ds-red</span><span style="color:var(--ds-red); font-size:14px">destructive</span><span class="mono" style="font-size:11px; color:var(--ds-comment); text-align:right">5.5 : 1</span><span style="text-align:center; color:var(--ds-green)">✓</span><span style="text-align:center; color:var(--ds-comment)">—</span></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 100px 80px 80px; padding:12px 16px; align-items:center"><span class="mono" style="font-size:11px">ds-comment</span><span style="color:var(--ds-comment); font-size:14px">muted text</span><span class="mono" style="font-size:11px; color:var(--ds-comment); text-align:right">4.7 : 1</span><span style="text-align:center; color:var(--ds-green)">✓</span><span style="text-align:center; color:var(--ds-comment)">—</span></div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px">
+      <!-- focus -->
+      <div class="ds-frame">
+        <span class="ds-frame__label">focus_visible</span>
+        <div style="padding:14px 0">
+          <p class="muted" style="font-size:13px; margin:0 0 14px">Every interactive element shows a 2 px purple ring offset by the background &mdash; never <code class="mono" style="color:var(--ds-red)">outline:none</code> without a replacement.</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap">
+            <button class="btn btn--default" style="box-shadow:0 0 0 2px var(--ds-bg), 0 0 0 4px var(--ds-purple)">focused_button</button>
+            <input class="input" style="width:200px; border-color:var(--ds-purple); box-shadow:0 0 0 2px rgba(189,147,249,.3)" placeholder="focused_input" />
+          </div>
+          <pre class="ds-code" style="margin-top:14px"><span class="c">// pattern</span>
+:focus-visible {
+  <span class="a">outline</span>: <span class="v">none</span>;
+  <span class="a">box-shadow</span>: <span class="s">0 0 0 2px var(--ds-bg),
+                       0 0 0 4px var(--ds-purple)</span>;
+}</pre>
+        </div>
+      </div>
+
+      <!-- keyboard -->
+      <div class="ds-frame">
+        <span class="ds-frame__label">keyboard map</span>
+        <div style="padding:14px 0">
+          <div style="display:grid; grid-template-columns:auto 1fr; gap:6px 14px; font-size:13px">
+            <span class="mono" style="color:var(--ds-purple)">⌘ K</span><span class="muted">command palette</span>
+            <span class="mono" style="color:var(--ds-purple)">⌘ ↵</span><span class="muted">send message · chat</span>
+            <span class="mono" style="color:var(--ds-purple)">/</span><span class="muted">shortcuts menu · chat</span>
+            <span class="mono" style="color:var(--ds-purple)">esc</span><span class="muted">close dialog · clear filter</span>
+            <span class="mono" style="color:var(--ds-purple)">↑ ↓</span><span class="muted">navigate lists</span>
+            <span class="mono" style="color:var(--ds-purple)">tab · ⇧ tab</span><span class="muted">focus next / prev</span>
+            <span class="mono" style="color:var(--ds-purple)">space</span><span class="muted">toggle switch · checkbox</span>
+            <span class="mono" style="color:var(--ds-purple)">space + drag</span><span class="muted">pan canvas · workflow</span>
+            <span class="mono" style="color:var(--ds-purple)">⌘ + scroll</span><span class="muted">zoom canvas · workflow</span>
+            <span class="mono" style="color:var(--ds-purple)">del</span><span class="muted">remove selected node</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARIA + motion -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:24px">
+      <div class="alert alert--success">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ds-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <div>
+          <div class="label" style="font-size:11px; color:var(--ds-green)">// aria_baseline</div>
+          <div style="font-size:13px; margin-top:4px">All icon-only buttons carry <span class="mono" style="color:var(--ds-purple)">aria-label</span>. Dialogs use <span class="mono" style="color:var(--ds-purple)">role="dialog"</span> + focus-trap. Live regions (toasts, execution status) use <span class="mono" style="color:var(--ds-purple)">aria-live="polite"</span>.</div>
+        </div>
+      </div>
+      <div class="alert alert--info">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ds-cyan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
+        <div>
+          <div class="label" style="font-size:11px; color:var(--ds-cyan)">// motion_preference</div>
+          <div style="font-size:13px; margin-top:4px">Honour <span class="mono" style="color:var(--ds-purple)">prefers-reduced-motion: reduce</span> &mdash; disable pulses, blink, neu spring, skeleton shimmer. Replace with instant state changes.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARGETS -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 06.06</span>
+      <h2>Touch targets &amp; sizing</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="ds-card" style="padding:24px">
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); gap:12px">
+        <div>
+          <div style="width:32px; height:32px; background:var(--ds-current); border-radius:4px; margin-bottom:8px"></div>
+          <div class="label" style="font-size:10px">sm · 32 px</div>
+          <div class="mono" style="font-size:10px; color:var(--ds-orange)">// chrome only · not for mobile</div>
+        </div>
+        <div>
+          <div style="width:36px; height:36px; background:var(--ds-current); border-radius:4px; margin-bottom:8px"></div>
+          <div class="label" style="font-size:10px">md · 36 px</div>
+          <div class="mono" style="font-size:10px; color:var(--ds-comment)">// default action target</div>
+        </div>
+        <div>
+          <div style="width:44px; height:44px; background:var(--ds-purple); border-radius:4px; margin-bottom:8px; box-shadow:var(--ds-glow-md-purple)"></div>
+          <div class="label" style="font-size:10px; color:var(--ds-purple)">touch · 44 px</div>
+          <div class="mono" style="font-size:10px; color:var(--ds-purple)">// WCAG minimum on mobile</div>
+        </div>
+        <div>
+          <div style="width:48px; height:48px; background:var(--ds-current); border-radius:4px; margin-bottom:8px"></div>
+          <div class="label" style="font-size:10px">lg · 48 px</div>
+          <div class="mono" style="font-size:10px; color:var(--ds-comment)">// hero CTAs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="ds/shell.js"></script>
+</body>
+</html>

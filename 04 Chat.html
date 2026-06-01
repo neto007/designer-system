@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ShieldAI · Chat surfaces</title>
+<link rel="stylesheet" href="ds/components.css" />
+<style>
+  .bubble {
+    border-radius: 16px; padding: 14px 16px;
+    border: 2px solid; box-shadow: var(--ds-neu-sm);
+    max-width: 520px; font-size: 14px; line-height: 1.55;
+    position: relative;
+  }
+  .bubble--user      { background: var(--ds-green); color: var(--ds-bg); border-color: var(--ds-green); font-weight: 500; }
+  .bubble--assistant { background: var(--ds-panel); color: var(--ds-fg); border-color: rgba(189,147,249,.5); }
+  .bubble--function  { background: var(--ds-panel); color: var(--ds-orange); border-color: rgba(255,184,108,.5); font-family: var(--ds-font-mono); font-size: 13px; }
+  .chat-row { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+  .chat-row--user { flex-direction: row-reverse; }
+</style>
+</head>
+<body data-crumbs="chat surfaces">
+<div id="ds-shell">
+
+  <div class="ds-page-head">
+    <div>
+      <div class="kicker">// 04 · surfaces</div>
+      <h1>Chat surfaces</h1>
+      <p class="lede">Where the user talks to an agent and the agent talks back. Neobrutalism takes the lead here &mdash; every bubble is touchable, hard-edged, committed.</p>
+    </div>
+    <div class="meta">
+      bubbles · 4 roles<br/>
+      input · neu_card<br/>
+      execution · streaming
+    </div>
+  </div>
+
+  <!-- BUBBLES -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 04.01</span>
+      <h2>Message bubbles</h2>
+      <div class="rule"></div>
+      <span class="tag">user · assistant · function · task</span>
+    </div>
+
+    <div class="ds-frame" style="padding:24px">
+
+      <!-- user -->
+      <div class="chat-row chat-row--user">
+        <div class="avatar avatar--user" style="flex-shrink:0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+        </div>
+        <div class="bubble bubble--user">
+          Run the parallel_extractor on the latest 50 tickets and summarise sentiment by product.
+        </div>
+      </div>
+
+      <!-- assistant -->
+      <div class="chat-row">
+        <div class="avatar avatar--bot" style="flex-shrink:0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg>
+        </div>
+        <div class="bubble bubble--assistant">
+          On it. I'll fan-out across three sub-agents (<span class="mono" style="color:var(--ds-pink)">sentiment</span>, <span class="mono" style="color:var(--ds-pink)">topic</span>, <span class="mono" style="color:var(--ds-pink)">product_tagger</span>) and aggregate the results. ETA ~ 4 s.
+        </div>
+      </div>
+
+      <!-- function call -->
+      <div class="chat-row">
+        <div class="avatar avatar--tool" style="flex-shrink:0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+        </div>
+        <div class="bubble bubble--function">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:14px">
+            <div class="label" style="font-size:11px; color:var(--ds-orange)">⚙ tool_call · search_tickets</div>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div style="margin-top:6px; color:var(--ds-comment)">// args: { limit: 50, status: "open" }</div>
+        </div>
+      </div>
+
+      <!-- assistant w/ streaming dot -->
+      <div class="chat-row">
+        <div class="avatar avatar--bot" style="flex-shrink:0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/></svg>
+        </div>
+        <div class="bubble bubble--assistant">
+          <div>Returned 47 open tickets. Aggregating sentiment now</div>
+          <span class="mono" style="display:inline-flex; gap:3px; margin-left:4px">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--ds-purple);box-shadow:0 0 8px var(--ds-purple);animation:bdot 1.4s ease-in-out infinite"></span>
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--ds-purple);box-shadow:0 0 8px var(--ds-purple);animation:bdot 1.4s ease-in-out infinite .2s"></span>
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--ds-purple);box-shadow:0 0 8px var(--ds-purple);animation:bdot 1.4s ease-in-out infinite .4s"></span>
+          </span>
+        </div>
+      </div>
+
+      <div class="mono" style="font-size:11px; color:var(--ds-comment); margin-top:6px; line-height:1.7">
+        // <strong>user</strong> → ds-green solid · right-aligned · readable on dark<br/>
+        // <strong>assistant</strong> → ds-panel + purple border · left-aligned<br/>
+        // <strong>function</strong> → ds-panel + orange border + mono · collapsible<br/>
+        // every bubble: <span style="color:var(--ds-purple)">2 px border</span> · <span style="color:var(--ds-purple)">16 px radius</span> · <span style="color:var(--ds-purple)">neu-sm shadow</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENT EXECUTION VIEW -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 04.02</span>
+      <h2>Agent execution view</h2>
+      <div class="rule"></div>
+      <span class="tag">grouped steps · final output</span>
+    </div>
+
+    <div class="ds-frame" style="padding:24px">
+      <div style="display:flex; gap:14px; align-items:flex-start">
+        <div class="avatar avatar--bot" style="flex-shrink:0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/></svg>
+        </div>
+        <div style="flex:1; max-width:680px">
+
+          <!-- header card -->
+          <div class="neu-card neu-card--purple" style="padding:16px; margin-bottom:12px">
+            <div style="display:flex; justify-content:space-between; align-items:center">
+              <div class="label" style="font-size:12px; color:var(--ds-purple)">// execution · parallel_extractor</div>
+              <span class="badge badge--solid-green" style="color:var(--ds-green)"><span class="dot pulse"></span>Running · 2.4s</span>
+            </div>
+          </div>
+
+          <!-- step 1 -->
+          <div class="ds-card" style="padding:12px; margin-bottom:8px; border:2px solid var(--ds-current); border-radius:12px; box-shadow:var(--ds-neu-sm)">
+            <div style="display:flex; justify-content:space-between; align-items:center">
+              <div style="display:flex; gap:10px; align-items:center">
+                <div style="width:24px; height:24px; border-radius:50%; background:rgba(80,250,123,.15); display:flex; align-items:center; justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ds-green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="label" style="font-size:11px">01 · search_tickets</span>
+                <span class="badge badge--orange" style="font-size:9px">tool</span>
+              </div>
+              <span class="mono" style="font-size:11px; color:var(--ds-comment)">412 ms</span>
+            </div>
+            <div class="mono" style="font-size:11px; color:var(--ds-comment); margin-top:8px; padding-left:34px">// returned 47 records</div>
+          </div>
+
+          <!-- step 2 -->
+          <div class="ds-card" style="padding:12px; margin-bottom:8px; border:2px solid var(--ds-current); border-radius:12px; box-shadow:var(--ds-neu-sm)">
+            <div style="display:flex; justify-content:space-between; align-items:center">
+              <div style="display:flex; gap:10px; align-items:center">
+                <div style="width:24px; height:24px; border-radius:50%; background:rgba(80,250,123,.15); display:flex; align-items:center; justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ds-green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="label" style="font-size:11px">02 · fan_out</span>
+                <span class="badge badge--pink" style="font-size:9px">Parallel</span>
+              </div>
+              <span class="mono" style="font-size:11px; color:var(--ds-comment)">1.2 s</span>
+            </div>
+            <div class="mono" style="font-size:11px; color:var(--ds-comment); margin-top:8px; padding-left:34px">// 3 sub_agents · sentiment · topic · product_tagger</div>
+          </div>
+
+          <!-- step 3 running -->
+          <div class="ds-card" style="padding:12px; margin-bottom:12px; border:2px solid var(--ds-purple); border-radius:12px; box-shadow:var(--ds-neu-purple)">
+            <div style="display:flex; justify-content:space-between; align-items:center">
+              <div style="display:flex; gap:10px; align-items:center">
+                <div style="width:24px; height:24px; border-radius:50%; background:rgba(189,147,249,.2); display:flex; align-items:center; justify-content:center">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ds-purple)" stroke-width="2.5" stroke-linecap="round" style="animation:spin 1s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                </div>
+                <span class="label" style="font-size:11px; color:var(--ds-purple)">03 · aggregate_sentiment</span>
+                <span class="badge badge--green" style="font-size:9px">LLM</span>
+              </div>
+              <span class="mono" style="font-size:11px; color:var(--ds-purple)">streaming…</span>
+            </div>
+          </div>
+
+          <!-- final output bubble -->
+          <div class="bubble bubble--assistant" style="border-color:rgba(80,250,123,.5); box-shadow:var(--ds-neu-sm), 0 0 30px rgba(80,250,123,.1); max-width:none">
+            <div class="label" style="font-size:11px; color:var(--ds-green); margin-bottom:6px">// final_output</div>
+            <p style="margin:0 0 8px">Across 47 open tickets:</p>
+            <ul style="margin:0; padding-left:18px; font-size:13px">
+              <li><strong style="color:var(--ds-fg)">Mobile</strong> &mdash; 64 % negative (mostly auth, push notifications)</li>
+              <li><strong style="color:var(--ds-fg)">Web</strong> &mdash; 38 % negative (billing exports flaky)</li>
+              <li><strong style="color:var(--ds-fg)">API</strong> &mdash; 12 % negative (rate-limit confusion)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JSON VIEWER -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 04.03</span>
+      <h2>JSON viewer</h2>
+      <div class="rule"></div>
+      <span class="tag">syntax-highlighted · copyable</span>
+    </div>
+
+    <div class="ds-card" style="border:2px solid rgba(189,147,249,.3); border-radius:8px; box-shadow:var(--ds-neu-sm); overflow:hidden">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 14px; border-bottom:1px solid var(--ds-current); background:var(--ds-bg)">
+        <span class="label" style="font-size:10px; color:var(--ds-purple)">// JSON · response_payload</span>
+        <div style="display:flex; gap:6px">
+          <button class="btn btn--ghost btn--sm" style="height:24px; padding:0 8px; font-size:11px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+          <button class="btn btn--ghost btn--sm" style="height:24px; padding:0 8px; font-size:11px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg></button>
+        </div>
+      </div>
+      <pre class="ds-code" style="border:none; border-radius:0; margin:0; background:var(--ds-panel); padding:18px 20px"><span class="c">// HTTP 200 · 412 ms · 1.4 kB</span>
+{
+  <span class="a">"session_id"</span>: <span class="s">"sess_2x9k4p1"</span>,
+  <span class="a">"agent_id"</span>: <span class="s">"agt_01HRY8ZX2N"</span>,
+  <span class="a">"status"</span>: <span class="s">"ok"</span>,
+  <span class="a">"result"</span>: {
+    <span class="a">"count"</span>: <span class="v">47</span>,
+    <span class="a">"sentiment"</span>: {
+      <span class="a">"positive"</span>: <span class="v">0.18</span>,
+      <span class="a">"neutral"</span>:  <span class="v">0.34</span>,
+      <span class="a">"negative"</span>: <span class="v">0.48</span>
+    },
+    <span class="a">"products"</span>: [<span class="s">"mobile"</span>, <span class="s">"web"</span>, <span class="s">"api"</span>],
+    <span class="a">"tools_used"</span>: <span class="v">3</span>
+  },
+  <span class="a">"latency_ms"</span>: <span class="v">412</span>,
+  <span class="a">"cost_usd"</span>: <span class="v">0.014</span>
+}</pre>
+    </div>
+  </section>
+
+  <!-- CHAT INPUT -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 04.04</span>
+      <h2>Chat input</h2>
+      <div class="rule"></div>
+      <span class="tag">neu-sm · focus-green</span>
+    </div>
+
+    <div class="ds-frame" style="padding:32px 24px">
+      <div style="max-width:760px; margin:0 auto">
+        <!-- attachments preview -->
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px">
+          <div class="ds-card" style="display:flex; gap:8px; padding:6px 10px; align-items:center; border:2px solid var(--ds-current); border-radius:8px; box-shadow:var(--ds-neu-sm)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ds-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span class="mono" style="font-size:11px">tickets_2026_05.csv</span>
+            <span class="mono" style="font-size:10px; color:var(--ds-comment)">·  84 kB</span>
+            <button class="btn btn--ghost btn--sm" style="height:18px; padding:0 4px; color:var(--ds-comment)" aria-label="remove"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+          </div>
+        </div>
+
+        <!-- input -->
+        <div style="display:flex; gap:10px; align-items:flex-end; background:var(--ds-bg); border:2px solid var(--ds-green); border-radius:12px; padding:10px; box-shadow:var(--ds-neu-green)">
+          <button class="btn btn--ghost btn--icon" style="flex-shrink:0" aria-label="attach"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ds-comment)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></button>
+          <textarea class="textarea" rows="2" placeholder="ask anything · ⌘↵ to send" style="border:none; background:transparent; padding:8px 0; resize:none; font-family:var(--ds-font-sans); flex:1">Run the parallel_extractor on the latest 50 tickets and summarise sentiment by product.</textarea>
+          <button class="btn btn--neu btn--neu-green btn--icon" style="flex-shrink:0" aria-label="send"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+        </div>
+
+        <!-- helper row -->
+        <div style="display:flex; justify-content:space-between; margin-top:10px; padding:0 4px">
+          <div style="display:flex; gap:14px; font-size:11px; color:var(--ds-comment)">
+            <span><span class="mono" style="color:var(--ds-purple)">⌘ K</span> commands</span>
+            <span><span class="mono" style="color:var(--ds-purple)">/ </span>shortcuts</span>
+            <span><span class="mono" style="color:var(--ds-purple)">@</span> mention agent</span>
+          </div>
+          <div class="mono" style="font-size:11px; color:var(--ds-comment)">182 / 32,768 tokens</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INLINE ATTACHMENTS -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 04.05</span>
+      <h2>Inline data attachments</h2>
+      <div class="rule"></div>
+      <span class="tag">image · file · code · table</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:12px">
+      <div class="ds-card" style="border:2px solid var(--ds-current); border-radius:8px; box-shadow:var(--ds-neu-sm); overflow:hidden">
+        <div style="aspect-ratio:4/3; background:repeating-linear-gradient(45deg, var(--ds-current) 0 8px, var(--ds-panel) 8px 16px); display:flex; align-items:center; justify-content:center"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--ds-comment)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></div>
+        <div style="padding:10px 12px">
+          <div class="mono" style="font-size:11px; color:var(--ds-fg)">sentiment_chart.png</div>
+          <div class="mono" style="font-size:10px; color:var(--ds-comment)">image · 142 kB</div>
+        </div>
+      </div>
+      <div class="ds-card" style="border:2px solid var(--ds-current); border-radius:8px; box-shadow:var(--ds-neu-sm); overflow:hidden">
+        <div style="aspect-ratio:4/3; background:var(--ds-bg); display:flex; align-items:center; justify-content:center"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--ds-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div style="padding:10px 12px">
+          <div class="mono" style="font-size:11px">tickets_2026_05.csv</div>
+          <div class="mono" style="font-size:10px; color:var(--ds-comment)">data · 84 kB</div>
+        </div>
+      </div>
+      <div class="ds-card" style="border:2px solid var(--ds-current); border-radius:8px; box-shadow:var(--ds-neu-sm); overflow:hidden">
+        <div style="aspect-ratio:4/3; background:var(--ds-bg); padding:12px; font-family:var(--ds-font-mono); font-size:10px; color:var(--ds-green); overflow:hidden">
+          <div><span style="color:var(--ds-comment)">1</span> def aggregate():</div>
+          <div><span style="color:var(--ds-comment)">2</span>   total = 0</div>
+          <div><span style="color:var(--ds-comment)">3</span>   for r in rows:</div>
+          <div><span style="color:var(--ds-comment)">4</span>     total += r</div>
+          <div><span style="color:var(--ds-comment)">5</span>   return total / n</div>
+        </div>
+        <div style="padding:10px 12px; border-top:1px solid var(--ds-current)">
+          <div class="mono" style="font-size:11px">aggregate.py</div>
+          <div class="mono" style="font-size:10px; color:var(--ds-comment)">code · python · 12 lines</div>
+        </div>
+      </div>
+      <div class="ds-card" style="border:2px solid var(--ds-current); border-radius:8px; box-shadow:var(--ds-neu-sm); overflow:hidden">
+        <div style="aspect-ratio:4/3; background:var(--ds-bg); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:6px"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--ds-orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 22h2a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><circle cx="6" cy="14" r="3"/><path d="M6 10v8M2 14h8"/></svg></div>
+        <div style="padding:10px 12px">
+          <div class="mono" style="font-size:11px">summary_table.json</div>
+          <div class="mono" style="font-size:10px; color:var(--ds-comment)">data · 3 cols · 47 rows</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPTY CHAT -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 04.06</span>
+      <h2>Empty chat state</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="ds-frame" style="padding:60px 32px; text-align:center">
+      <div style="display:inline-flex; width:80px; height:80px; border-radius:32px; background:var(--ds-current); border:4px solid var(--ds-purple); align-items:center; justify-content:center; box-shadow:var(--ds-neu); transform:rotate(3deg)">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--ds-purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg>
+      </div>
+      <h3 class="label" style="font-size:18px; margin:20px 0 6px">Pick_an_agent_to_start</h3>
+      <p class="muted" style="font-size:14px; margin:0 auto; max-width:420px">Sessions persist across reloads. Type <span class="mono" style="color:var(--ds-purple)">/</span> for shortcuts or <span class="mono" style="color:var(--ds-purple)">⌘ K</span> to search agents.</p>
+      <div style="display:flex; gap:8px; justify-content:center; margin-top:20px; flex-wrap:wrap">
+        <button class="btn btn--neu btn--sm">@ evo_orchestrator</button>
+        <button class="btn btn--neu btn--sm">@ parallel_extractor</button>
+        <button class="btn btn--neu btn--sm">@ guardrail_classifier</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+<style>
+@keyframes spin  { from { transform: rotate(0) } to { transform: rotate(360deg) } }
+@keyframes bdot  { 0%,80%,100% { opacity:.3 } 40% { opacity:1 } }
+</style>
+<script src="ds/shell.js"></script>
+</body>
+</html>

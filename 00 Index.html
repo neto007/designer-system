@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ShieldAI · Design System</title>
+<link rel="stylesheet" href="ds/components.css" />
+</head>
+<body data-crumbs="introduction">
+<div id="ds-shell">
+
+  <!-- HERO -->
+  <section style="position:relative; padding: 32px 0 56px; border-bottom:1px solid var(--ds-current); overflow:hidden;">
+    <div class="grid-bg" style="position:absolute; inset:0; opacity:.6; pointer-events:none"></div>
+    <div class="scanline" style="position:absolute; inset:0; opacity:.5; pointer-events:none"></div>
+
+    <div style="position:relative">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px">
+        <span style="height:1px; width:48px; background:var(--ds-purple)"></span>
+        <span class="label" style="color:var(--ds-purple); font-size:10px">// system.manifest · v1.0</span>
+      </div>
+      <h1 style="font-size: clamp(56px, 8vw, 96px); line-height:.95; font-weight:900; text-transform:uppercase; letter-spacing:-.02em; margin:0;">
+        Design&nbsp;System<br/>
+        <span style="color:var(--ds-purple); text-shadow:0 0 30px rgba(189,147,249,.5)">for autonomous</span><br/>
+        <em style="color:var(--ds-green); text-shadow:0 0 30px rgba(80,250,123,.45)">agent platforms.</em>
+      </h1>
+      <p style="margin-top:28px; max-width:680px; color:var(--ds-comment); font-size:17px; line-height:1.6">
+        The ShieldAI Design System is the operating manual for every product surface in the EVO platform &mdash;
+        and a turnkey foundation for any system that derives from it.
+        Two stylistic eixos live side by side: <strong style="color:var(--ds-fg)">Dracula‑neon</strong> for chrome and signal,
+        <strong style="color:var(--ds-fg)">Neobrutalism</strong> for dialogs, inputs and chat. One canvas. One vocabulary.
+      </p>
+
+      <div class="mono" style="margin-top:28px; color:var(--ds-green); font-size:14px">
+        <span class="muted">$</span> sudo shieldai inspect --target=design_system<span class="blink"></span>
+      </div>
+
+      <div style="display:flex; gap:12px; margin-top:32px; flex-wrap:wrap">
+        <a class="btn btn--default" href="01 Foundations.html">→ Start with foundations</a>
+        <a class="btn btn--outline" href="02 Components.html">Browse components</a>
+        <a class="btn btn--ghost" href="07 Resources.html">Download tokens</a>
+      </div>
+    </div>
+
+    <!-- stats row -->
+    <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:var(--ds-current); border:1px solid var(--ds-current); margin-top:56px">
+      <div style="background:var(--ds-panel); padding:20px">
+        <div class="label" style="font-size:9px; color:var(--ds-comment)">Pages</div>
+        <div style="font-size:32px; font-weight:900; color:var(--ds-fg); margin-top:6px">08</div>
+        <div class="mono" style="font-size:10px; color:var(--ds-comment); margin-top:2px">foundation → resources</div>
+      </div>
+      <div style="background:var(--ds-panel); padding:20px">
+        <div class="label" style="font-size:9px; color:var(--ds-comment)">Components</div>
+        <div style="font-size:32px; font-weight:900; color:var(--ds-purple); margin-top:6px">32+</div>
+        <div class="mono" style="font-size:10px; color:var(--ds-comment); margin-top:2px">radix · cva · neu</div>
+      </div>
+      <div style="background:var(--ds-panel); padding:20px">
+        <div class="label" style="font-size:9px; color:var(--ds-comment)">Agent_types</div>
+        <div style="font-size:32px; font-weight:900; color:var(--ds-green); margin-top:6px">07</div>
+        <div class="mono" style="font-size:10px; color:var(--ds-comment); margin-top:2px">color-coded</div>
+      </div>
+      <div style="background:var(--ds-panel); padding:20px">
+        <div class="label" style="font-size:9px; color:var(--ds-comment)">Tokens</div>
+        <div style="font-size:32px; font-weight:900; color:var(--ds-cyan); margin-top:6px">62</div>
+        <div class="mono" style="font-size:10px; color:var(--ds-comment); margin-top:2px">.css · .json · tw_cfg</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 01</span>
+      <h2>Principles</h2>
+      <div class="rule"></div>
+      <span class="tag">five rules that shape every decision</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px">
+      <div class="ds-card ds-card--padded">
+        <div class="mono" style="color:var(--ds-purple); font-size:11px">01</div>
+        <h3 style="margin:8px 0 6px; font-size:14px" class="label">Terminal_first</h3>
+        <p class="muted" style="font-size:13px; margin:0">Power users live in CLIs. Mirror their syntax: <span class="mono" style="color:var(--ds-purple)">snake_case</span>, monospace ids, prefixed verbs.</p>
+      </div>
+      <div class="ds-card ds-card--padded">
+        <div class="mono" style="color:var(--ds-green); font-size:11px">02</div>
+        <h3 style="margin:8px 0 6px; font-size:14px" class="label">Color_is_meaning</h3>
+        <p class="muted" style="font-size:13px; margin:0">Every neon owns one concept. Never paint with palette &mdash; encode with it.</p>
+      </div>
+      <div class="ds-card ds-card--padded">
+        <div class="mono" style="color:var(--ds-cyan); font-size:11px">03</div>
+        <h3 style="margin:8px 0 6px; font-size:14px" class="label">Glow_signals_state</h3>
+        <p class="muted" style="font-size:13px; margin:0">Glow = live. Hard offset shadow = tactile. Both replace gradients and soft drop‑shadows.</p>
+      </div>
+      <div class="ds-card ds-card--padded">
+        <div class="mono" style="color:var(--ds-pink); font-size:11px">04</div>
+        <h3 style="margin:8px 0 6px; font-size:14px" class="label">Density_with_dignity</h3>
+        <p class="muted" style="font-size:13px; margin:0">High information density without crushing &mdash; tight type, wide tracking, ample dark space.</p>
+      </div>
+      <div class="ds-card ds-card--padded">
+        <div class="mono" style="color:var(--ds-orange); font-size:11px">05</div>
+        <h3 style="margin:8px 0 6px; font-size:14px" class="label">Voice_is_a_log</h3>
+        <p class="muted" style="font-size:13px; margin:0">Speak like a system writing to stdout. No fluff, no exclamations, no emoji. Precision &gt; politeness.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO STYLE AXES -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 02</span>
+      <h2>Two style axes, one system</h2>
+      <div class="rule"></div>
+      <span class="tag">dracula_neon × neobrutalism</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px">
+      <!-- Dracula -->
+      <div class="ds-frame">
+        <span class="ds-frame__label">axis_01 · dracula_neon</span>
+        <div style="display:flex; flex-direction:column; gap:16px; padding-top:20px">
+          <div style="display:flex; gap:8px">
+            <span class="badge badge--green">LLM</span>
+            <span class="badge badge--purple">A2A</span>
+            <span class="badge badge--cyan">Workflow</span>
+          </div>
+          <button class="btn btn--default">+ Create_agent</button>
+          <p class="muted" style="font-size:13px; margin:0">
+            Soft neon glow, thin borders, tight type. Used for application chrome, navigation,
+            data tables, status badges, agent cards.
+          </p>
+          <div class="mono" style="font-size:11px; color:var(--ds-comment)">
+            // border: 1px · radius: 4–8 · shadow: 0 0 15px alpha:.35
+          </div>
+        </div>
+      </div>
+
+      <!-- Neobrutalism -->
+      <div class="ds-frame">
+        <span class="ds-frame__label">axis_02 · neobrutalism</span>
+        <div style="display:flex; flex-direction:column; gap:16px; padding-top:20px">
+          <div style="display:flex; gap:8px">
+            <button class="btn btn--neu btn--neu-green">Save</button>
+            <button class="btn btn--neu btn--neu-purple">Run</button>
+            <button class="btn btn--neu">Cancel</button>
+          </div>
+          <input class="input input--neu" placeholder="folder_name_here" />
+          <p class="muted" style="font-size:13px; margin:0">
+            Hard offset shadows, 2 px borders, oversized radius. Used for dialogs, configuration
+            forms, chat bubbles &mdash; surfaces meant to feel touchable and committed.
+          </p>
+          <div class="mono" style="font-size:11px; color:var(--ds-comment)">
+            // border: 2px · radius: 8–16 · shadow: 4px 4px 0 0 #color
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE OF CONTENTS -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 03</span>
+      <h2>Table of contents</h2>
+      <div class="rule"></div>
+      <span class="tag">8 pages</span>
+    </div>
+
+    <div style="display:grid; gap:0; border:1px solid var(--ds-current); background:var(--ds-panel)">
+      <a class="toc-row" href="01 Foundations.html"  style="display:grid; grid-template-columns:60px 200px 1fr auto; gap:24px; padding:18px 20px; border-bottom:1px solid var(--ds-current); align-items:center; color:inherit">
+        <span class="mono" style="color:var(--ds-purple)">01</span>
+        <span class="label" style="font-size:13px">Foundations</span>
+        <span class="muted" style="font-size:13px">Color · type · spacing · radius · glow · neobrutalism · motion · z-index</span>
+        <span class="mono" style="color:var(--ds-comment); font-size:11px">→</span>
+      </a>
+      <a class="toc-row" href="02 Components.html"   style="display:grid; grid-template-columns:60px 200px 1fr auto; gap:24px; padding:18px 20px; border-bottom:1px solid var(--ds-current); align-items:center; color:inherit">
+        <span class="mono" style="color:var(--ds-purple)">02</span>
+        <span class="label" style="font-size:13px">Components</span>
+        <span class="muted" style="font-size:13px">Button · input · select · switch · avatar · badge · dialog · dropdown · tooltip · toast · progress · skeleton · alert</span>
+        <span class="mono" style="color:var(--ds-comment); font-size:11px">→</span>
+      </a>
+      <a class="toc-row" href="03 Patterns.html"     style="display:grid; grid-template-columns:60px 200px 1fr auto; gap:24px; padding:18px 20px; border-bottom:1px solid var(--ds-current); align-items:center; color:inherit">
+        <span class="mono" style="color:var(--ds-purple)">03</span>
+        <span class="label" style="font-size:13px">Patterns</span>
+        <span class="muted" style="font-size:13px">App header · sidebar · agent type coding · agent card · empty state · stats · confirmation · pagination · filters</span>
+        <span class="mono" style="color:var(--ds-comment); font-size:11px">→</span>
+      </a>
+      <a class="toc-row" href="04 Chat.html"         style="display:grid; grid-template-columns:60px 200px 1fr auto; gap:24px; padding:18px 20px; border-bottom:1px solid var(--ds-current); align-items:center; color:inherit">
+        <span class="mono" style="color:var(--ds-purple)">04</span>
+        <span class="label" style="font-size:13px">Chat surfaces</span>
+        <span class="muted" style="font-size:13px">User · agent · function bubbles · execution view · JSON viewer · chat input · inline attachments</span>
+        <span class="mono" style="color:var(--ds-comment); font-size:11px">→</span>
+      </a>
+      <a class="toc-row" href="05 Workflow.html"     style="display:grid; grid-template-columns:60px 200px 1fr auto; gap:24px; padding:18px 20px; border-bottom:1px solid var(--ds-current); align-items:center; color:inherit">
+        <span class="mono" style="color:var(--ds-purple)">05</span>
+        <span class="label" style="font-size:13px">Workflow canvas</span>
+        <span class="muted" style="font-size:13px">Start · agent · condition · delay · message nodes · edges · handles · minimap · selection</span>
+        <span class="mono" style="color:var(--ds-comment); font-size:11px">→</span>
+      </a>
+      <a class="toc-row" href="06 Voice & A11y.html" style="display:grid; grid-template-columns:60px 200px 1fr auto; gap:24px; padding:18px 20px; border-bottom:1px solid var(--ds-current); align-items:center; color:inherit">
+        <span class="mono" style="color:var(--ds-purple)">06</span>
+        <span class="label" style="font-size:13px">Voice &amp; a11y</span>
+        <span class="muted" style="font-size:13px">Tone · microcopy · error format · contrast · focus rings · keyboard · ARIA · motion preference</span>
+        <span class="mono" style="color:var(--ds-comment); font-size:11px">→</span>
+      </a>
+      <a class="toc-row" href="07 Resources.html"    style="display:grid; grid-template-columns:60px 200px 1fr auto; gap:24px; padding:18px 20px; align-items:center; color:inherit">
+        <span class="mono" style="color:var(--ds-purple)">07</span>
+        <span class="label" style="font-size:13px">Resources</span>
+        <span class="muted" style="font-size:13px">tokens.css · tokens.json · tailwind preset · dev quickstart · governance · changelog</span>
+        <span class="mono" style="color:var(--ds-comment); font-size:11px">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- INTENDED USE -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 04</span>
+      <h2>Built for derivatives</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px">
+      <div class="neu-card neu-card--purple">
+        <div class="label" style="color:var(--ds-purple); font-size:10px">EVO platform</div>
+        <h3 style="margin:8px 0; font-size:18px">Primary host</h3>
+        <p class="muted" style="font-size:13px; margin:0">Reference implementation. Every token, component and pattern ships from here first.</p>
+      </div>
+      <div class="neu-card neu-card--green">
+        <div class="label" style="color:var(--ds-green); font-size:10px">white_label</div>
+        <h3 style="margin:8px 0; font-size:18px">Partner skins</h3>
+        <p class="muted" style="font-size:13px; margin:0">Swap the signal palette via the CSS variable layer to spin up branded forks in hours, not weeks.</p>
+      </div>
+      <div class="neu-card neu-card--pink">
+        <div class="label" style="color:var(--ds-pink); font-size:10px">downstream apps</div>
+        <h3 style="margin:8px 0; font-size:18px">Internal tools</h3>
+        <p class="muted" style="font-size:13px; margin:0">Same chrome, same controls, lower onboarding cost &mdash; one shared vocabulary across the org.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="ds/shell.js"></script>
+</body>
+</html>

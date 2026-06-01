@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ShieldAI · Resources</title>
+<link rel="stylesheet" href="ds/components.css" />
+</head>
+<body data-crumbs="resources">
+<div id="ds-shell">
+
+  <div class="ds-page-head">
+    <div>
+      <div class="kicker">// 07 · resources</div>
+      <h1>Resources</h1>
+      <p class="lede">Everything you need to ship with the design system: token files, a Tailwind preset, install instructions, governance and the changelog.</p>
+    </div>
+    <div class="meta">
+      tokens · 62<br/>
+      preset · tailwind<br/>
+      license · MIT
+    </div>
+  </div>
+
+  <!-- DOWNLOADS -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 07.01</span>
+      <h2>Tokens &amp; presets</h2>
+      <div class="rule"></div>
+      <span class="tag">single source of truth</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px">
+      <a class="neu-card neu-card--purple" href="ds/tokens.css" download style="cursor:pointer; color:inherit; display:block">
+        <div style="display:flex; justify-content:space-between; align-items:center">
+          <div class="label" style="color:var(--ds-purple); font-size:10px">// css_variables</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ds-purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <h3 style="margin:10px 0 4px; font-size:16px" class="mono">tokens.css</h3>
+        <p class="muted" style="font-size:12px; margin:0">All 62 tokens as <code class="mono">:root</code> custom properties. Import once, override per‑theme.</p>
+      </a>
+      <a class="neu-card neu-card--green" href="ds/tokens.json" download style="cursor:pointer; color:inherit; display:block">
+        <div style="display:flex; justify-content:space-between; align-items:center">
+          <div class="label" style="color:var(--ds-green); font-size:10px">// w3c_format</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ds-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <h3 style="margin:10px 0 4px; font-size:16px" class="mono">tokens.json</h3>
+        <p class="muted" style="font-size:12px; margin:0">Design Tokens Community Group format. Feed into Style Dictionary, Figma Tokens, etc.</p>
+      </a>
+      <a class="neu-card neu-card--pink" href="ds/tailwind-preset.js" download style="cursor:pointer; color:inherit; display:block">
+        <div style="display:flex; justify-content:space-between; align-items:center">
+          <div class="label" style="color:var(--ds-pink); font-size:10px">// tailwind_v3</div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ds-pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <h3 style="margin:10px 0 4px; font-size:16px" class="mono">tailwind-preset.js</h3>
+        <p class="muted" style="font-size:12px; margin:0">Drop-in preset with colors, fonts, shadows (glow + neu) and keyframes.</p>
+      </a>
+      <div class="neu-card">
+        <div class="label" style="color:var(--ds-comment); font-size:10px">// soon</div>
+        <h3 style="margin:10px 0 4px; font-size:16px" class="mono">figma-library.fig</h3>
+        <p class="muted" style="font-size:12px; margin:0">Library file with components, variants and the dual theme styles. <span style="color:var(--ds-orange)">In progress.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 07.02</span>
+      <h2>Quickstart</h2>
+      <div class="rule"></div>
+      <span class="tag">3 ways to consume the system</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px">
+      <div class="ds-card ds-card--padded">
+        <div class="label" style="font-size:11px">option_a · vanilla css</div>
+        <p class="muted" style="font-size:13px; margin:6px 0 10px">For static sites, marketing, embeds.</p>
+        <pre class="ds-code" style="font-size:11px"><span class="c">/* 1. import once */</span>
+@import url(<span class="s">"./ds/tokens.css"</span>);
+
+<span class="c">/* 2. use anywhere */</span>
+.btn {
+  background: <span class="v">var(--ds-purple)</span>;
+  box-shadow: <span class="v">var(--ds-glow-md-purple)</span>;
+}</pre>
+      </div>
+
+      <div class="ds-card ds-card--padded">
+        <div class="label" style="font-size:11px">option_b · tailwind</div>
+        <p class="muted" style="font-size:13px; margin:6px 0 10px">For React / Vue projects using Tailwind v3+.</p>
+        <pre class="ds-code" style="font-size:11px"><span class="c">// tailwind.config.js</span>
+<span class="k">import</span> shieldai
+  <span class="k">from</span> <span class="s">'./ds/tailwind-preset.js'</span>
+
+<span class="k">export default</span> {
+  <span class="a">presets</span>: [shieldai],
+  <span class="a">content</span>: [<span class="s">'./src/**/*.tsx'</span>],
+}</pre>
+      </div>
+
+      <div class="ds-card ds-card--padded">
+        <div class="label" style="font-size:11px">option_c · style_dictionary</div>
+        <p class="muted" style="font-size:13px; margin:6px 0 10px">For multi-platform pipelines (web + iOS + Android).</p>
+        <pre class="ds-code" style="font-size:11px"><span class="c">// build.cjs</span>
+<span class="k">const</span> sd = <span class="k">require</span>(<span class="s">'style-dictionary'</span>)
+sd.extend({
+  <span class="a">source</span>: [<span class="s">'ds/tokens.json'</span>],
+  <span class="a">platforms</span>: { css: { ... }, ios: { ... } }
+}).buildAllPlatforms()</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEV CHECKLIST -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 07.03</span>
+      <h2>Dev checklist</h2>
+      <div class="rule"></div>
+      <span class="tag">before opening a PR</span>
+    </div>
+
+    <div class="ds-card" style="padding:18px">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px 32px">
+        <label style="display:flex; gap:10px; align-items:flex-start; font-size:13px"><span style="width:16px;height:16px; border-radius:2px; background:var(--ds-purple); box-shadow:0 0 8px rgba(189,147,249,.4); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>All colors come from <span class="mono" style="color:var(--ds-purple)">--ds-*</span> tokens. No hard-coded hex anywhere except the Foundations page.</span></label>
+        <label style="display:flex; gap:10px; align-items:flex-start; font-size:13px"><span style="width:16px;height:16px; border-radius:2px; background:var(--ds-purple); box-shadow:0 0 8px rgba(189,147,249,.4); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Every interactive element has a visible <span class="mono" style="color:var(--ds-purple)">:focus-visible</span> ring.</span></label>
+        <label style="display:flex; gap:10px; align-items:flex-start; font-size:13px"><span style="width:16px;height:16px; border-radius:2px; background:var(--ds-purple); box-shadow:0 0 8px rgba(189,147,249,.4); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Touch targets ≥ 44 × 44 px on mobile breakpoints.</span></label>
+        <label style="display:flex; gap:10px; align-items:flex-start; font-size:13px"><span style="width:16px;height:16px; border-radius:2px; background:var(--ds-purple); box-shadow:0 0 8px rgba(189,147,249,.4); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Microcopy follows voice guidelines (<span class="mono" style="color:var(--ds-purple)">snake_case</span>, no emoji, no exclamations).</span></label>
+        <label style="display:flex; gap:10px; align-items:flex-start; font-size:13px"><span style="width:16px;height:16px; border-radius:2px; border:1px solid var(--ds-current); flex-shrink:0; margin-top:2px"></span><span>One neon per component. No more than two neons in a single card.</span></label>
+        <label style="display:flex; gap:10px; align-items:flex-start; font-size:13px"><span style="width:16px;height:16px; border-radius:2px; border:1px solid var(--ds-current); flex-shrink:0; margin-top:2px"></span><span>Error messages use the <span class="mono" style="color:var(--ds-purple)">// ERR_*</span> code · what · how format.</span></label>
+        <label style="display:flex; gap:10px; align-items:flex-start; font-size:13px"><span style="width:16px;height:16px; border-radius:2px; border:1px solid var(--ds-current); flex-shrink:0; margin-top:2px"></span><span>Reduced-motion preference disables pulses, shimmer, blink.</span></label>
+        <label style="display:flex; gap:10px; align-items:flex-start; font-size:13px"><span style="width:16px;height:16px; border-radius:2px; border:1px solid var(--ds-current); flex-shrink:0; margin-top:2px"></span><span>New tokens added? Update <span class="mono" style="color:var(--ds-purple)">tokens.css</span> + <span class="mono" style="color:var(--ds-purple)">tokens.json</span> + <span class="mono" style="color:var(--ds-purple)">tailwind-preset.js</span> in the same PR.</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOVERNANCE -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 07.04</span>
+      <h2>Governance</h2>
+      <div class="rule"></div>
+      <span class="tag">how the system evolves</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px">
+      <div class="ds-card ds-card--padded">
+        <div class="label" style="color:var(--ds-purple); font-size:10px">// owners</div>
+        <h3 style="margin:8px 0 6px; font-size:14px" class="label">Platform_team</h3>
+        <p class="muted" style="font-size:13px; margin:0">Owns the core: tokens, foundations, and the components in this library. Reviews all token-level changes.</p>
+      </div>
+      <div class="ds-card ds-card--padded">
+        <div class="label" style="color:var(--ds-green); font-size:10px">// contributors</div>
+        <h3 style="margin:8px 0 6px; font-size:14px" class="label">Surface_squads</h3>
+        <p class="muted" style="font-size:13px; margin:0">Each product surface (Chat, Workflow, Studio) can propose new patterns via RFC, ship behind a flag, then promote to the kit.</p>
+      </div>
+      <div class="ds-card ds-card--padded">
+        <div class="label" style="color:var(--ds-cyan); font-size:10px">// review_cadence</div>
+        <h3 style="margin:8px 0 6px; font-size:14px" class="label">Bi_weekly_council</h3>
+        <p class="muted" style="font-size:13px; margin:0">Token freezes ship on major releases. Component additions ship weekly. Bug fixes ship anytime.</p>
+      </div>
+    </div>
+
+    <div class="alert alert--info" style="margin-top:16px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ds-cyan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <div>
+        <div class="label" style="font-size:11px; color:var(--ds-cyan)">// proposing a change</div>
+        <div style="font-size:13px; margin-top:4px">Open an issue in <span class="mono" style="color:var(--ds-purple)">evolution-api/shieldai-ds</span> with the <span class="mono" style="color:var(--ds-purple)">rfc</span> label. Include screenshots, the problem statement, and at least one alternative considered.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERSIONING -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 07.05</span>
+      <h2>Versioning</h2>
+      <div class="rule"></div>
+      <span class="tag">semver · changelog</span>
+    </div>
+
+    <div class="ds-card" style="overflow:hidden">
+      <div style="display:grid; grid-template-columns:100px 120px 1fr; padding:10px 16px; background:var(--ds-bg); border-bottom:1px solid var(--ds-current)">
+        <span class="label" style="font-size:9px; color:var(--ds-comment)">version</span>
+        <span class="label" style="font-size:9px; color:var(--ds-comment)">date</span>
+        <span class="label" style="font-size:9px; color:var(--ds-comment)">notes</span>
+      </div>
+
+      <div style="display:grid; grid-template-columns:100px 120px 1fr; padding:14px 16px; border-bottom:1px solid var(--ds-current); align-items:flex-start">
+        <span class="mono" style="color:var(--ds-purple); font-weight:700">v1.0.0</span>
+        <span class="mono" style="font-size:11px; color:var(--ds-comment)">2026.05.24</span>
+        <div style="font-size:13px">
+          Initial enterprise release. Dual axes (Dracula + Neobrutalism). 32 components, 8 pages.
+          Workflow canvas, chat surfaces, command palette. Tokens exported as CSS, JSON and Tailwind preset.
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:100px 120px 1fr; padding:14px 16px; border-bottom:1px solid var(--ds-current); align-items:flex-start">
+        <span class="mono" style="color:var(--ds-comment); font-weight:700">v0.9.0</span>
+        <span class="mono" style="font-size:11px; color:var(--ds-comment)">2026.05.20</span>
+        <div style="font-size:13px">Single-page reference doc. Foundations, components, voice. Dracula axis only.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:100px 120px 1fr; padding:14px 16px; align-items:flex-start">
+        <span class="mono" style="color:var(--ds-comment); font-weight:700">v0.8.0</span>
+        <span class="mono" style="font-size:11px; color:var(--ds-comment)">2026.04.10</span>
+        <div style="font-size:13px">Token extraction from EVO frontend. <span class="mono" style="color:var(--ds-comment)">tailwind.config.js</span> normalised to <span class="mono" style="color:var(--ds-purple)">--ds-*</span>.</div>
+      </div>
+    </div>
+
+    <div class="mono" style="font-size:11px; color:var(--ds-comment); margin-top:14px; line-height:1.6">
+      // major · token removal · breaking signature change<br/>
+      // minor · new component · new token · new pattern<br/>
+      // patch · bug · doc · copy · a11y fix
+    </div>
+  </section>
+
+  <!-- SUPPORT -->
+  <section class="ds-section">
+    <div class="ds-section__head">
+      <span class="num">// 07.06</span>
+      <h2>Support</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px">
+      <div class="ds-card ds-card--padded">
+        <div class="label" style="font-size:10px; color:var(--ds-comment)">// channel</div>
+        <h3 style="margin:8px 0 6px; font-size:14px" class="mono">#design-system</h3>
+        <p class="muted" style="font-size:13px; margin:0">Slack channel for day-to-day questions, quick reviews, and async help.</p>
+      </div>
+      <div class="ds-card ds-card--padded">
+        <div class="label" style="font-size:10px; color:var(--ds-comment)">// repo</div>
+        <h3 style="margin:8px 0 6px; font-size:14px" class="mono">evolution-api/shieldai-ds</h3>
+        <p class="muted" style="font-size:13px; margin:0">Source of truth. PRs welcome. Tag <span class="mono" style="color:var(--ds-purple)">@design-system</span> for review.</p>
+      </div>
+      <div class="ds-card ds-card--padded">
+        <div class="label" style="font-size:10px; color:var(--ds-comment)">// office_hours</div>
+        <h3 style="margin:8px 0 6px; font-size:14px" class="mono">thu · 16:00 BRT</h3>
+        <p class="muted" style="font-size:13px; margin:0">Open call for design + frontend questions. Bring a Figma file or a branch.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="ds/shell.js"></script>
+</body>
+</html>
