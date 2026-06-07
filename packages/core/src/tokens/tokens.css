@@ -59,18 +59,51 @@
 
   --ds-tracking-widest: 0.2em;
 
-  /* ---- SPACING (4 px base) ---- */
+  /* ---- SPACING (4px base grid — MD3 complete scale) ---- */
+  --ds-s-0:   0px;
+  --ds-s-px:  1px;
+  --ds-s-0-5: 2px;
   --ds-s-1:   4px;
   --ds-s-2:   8px;
   --ds-s-3:  12px;
   --ds-s-4:  16px;
+  --ds-s-5:  20px;
   --ds-s-6:  24px;
+  --ds-s-7:  28px;
   --ds-s-8:  32px;
+  --ds-s-9:  36px;
+  --ds-s-10: 40px;
   --ds-s-12: 48px;
+  --ds-s-14: 56px;
   --ds-s-16: 64px;
+  --ds-s-20: 80px;
   --ds-s-24: 96px;
+  --ds-s-30: 120px;
+  --ds-s-40: 160px;
 
-  /* ---- RADIUS ---- */
+  /* ---- SHAPE SCALE (MD3 — primitive radius values) ---- */
+  --ds-shape-none: 0px;
+  --ds-shape-xs:   4px;    /* extra-small — inputs, menus, tooltips */
+  --ds-shape-sm:   8px;    /* small — chips, snackbars */
+  --ds-shape-md:   12px;   /* medium — cards, panels */
+  --ds-shape-lg:   16px;   /* large — FAB, nav drawers */
+  --ds-shape-xl:   28px;   /* extra-large — dialogs, bottom sheets */
+  --ds-shape-full: 9999px; /* full — pills, badges, buttons */
+
+  /* ---- SHAPE ROLES (MD3 — semantic per-component assignments) ---- */
+  --ds-shape-button:   var(--ds-shape-full);
+  --ds-shape-chip:     var(--ds-shape-sm);
+  --ds-shape-card:     var(--ds-shape-md);
+  --ds-shape-dialog:   var(--ds-shape-xl);
+  --ds-shape-input:    var(--ds-shape-xs);
+  --ds-shape-fab:      var(--ds-shape-lg);
+  --ds-shape-menu:     var(--ds-shape-xs);
+  --ds-shape-tooltip:  var(--ds-shape-xs);
+  --ds-shape-badge:    var(--ds-shape-full);
+  --ds-shape-snackbar: var(--ds-shape-sm);
+  --ds-shape-panel:    var(--ds-shape-md);
+
+  /* ---- RADIUS (legacy aliases — kept for backward compat) ---- */
   --ds-r-none: 0;
   --ds-r-sm:   2px;
   --ds-r-md:   4px;
@@ -103,11 +136,41 @@
   --ds-neu-orange: 4px 4px 0px 0px #ffb86c;
   --ds-neu-red:    4px 4px 0px 0px #ff5555;
 
-  /* ---- MOTION ---- */
-  --ds-dur-fast:    150ms;
-  --ds-dur-default: 200ms;
-  --ds-dur-slow:    300ms;
-  --ds-ease-out:    cubic-bezier(.4,0,.2,1);
+  /* ---- MOTION — Duration scale (MD3 Short/Medium/Long/ExtraLong) ---- */
+  --ds-dur-short1:      50ms;  /* micro: ripple, icon swap */
+  --ds-dur-short2:     100ms;  /* tooltip appear, checkmark */
+  --ds-dur-short3:     150ms;  /* button press, chip dismiss */
+  --ds-dur-short4:     200ms;  /* default — hover, toggle */
+  --ds-dur-medium1:    250ms;  /* simple enter/exit */
+  --ds-dur-medium2:    300ms;  /* panel expand, menu open */
+  --ds-dur-medium3:    350ms;  /* page section enter */
+  --ds-dur-medium4:    400ms;  /* complex component enter */
+  --ds-dur-long1:      450ms;  /* large surface enter */
+  --ds-dur-long2:      500ms;  /* full-screen transitions */
+  --ds-dur-long3:      550ms;
+  --ds-dur-long4:      600ms;  /* modal/dialog enter */
+  --ds-dur-extra-long1: 700ms;
+  --ds-dur-extra-long2: 800ms;
+  --ds-dur-extra-long3: 900ms;
+  --ds-dur-extra-long4: 1000ms; /* dramatic, onboarding */
+
+  /* Semantic aliases (backward compat) */
+  --ds-dur-fast:    var(--ds-dur-short3);
+  --ds-dur-default: var(--ds-dur-short4);
+  --ds-dur-slow:    var(--ds-dur-medium2);
+
+  /* ---- MOTION — Easing curves (MD3 Emphasized + Standard families) ---- */
+  /* Emphasized — for hero elements, persistent surfaces (spring-like) */
+  --ds-ease-emphasized:            cubic-bezier(0.2, 0, 0, 1.0);
+  --ds-ease-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1.0); /* elements entering screen */
+  --ds-ease-emphasized-accelerate: cubic-bezier(0.3, 0.0, 0.8, 0.15); /* elements leaving screen */
+  /* Standard — for utility elements, non-hero transitions */
+  --ds-ease-standard:            cubic-bezier(0.2, 0.0, 0, 1.0);
+  --ds-ease-standard-decelerate: cubic-bezier(0, 0, 0, 1);           /* enter from off-screen */
+  --ds-ease-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);         /* exit to off-screen */
+
+  /* Aliases (backward compat) */
+  --ds-ease-out:    var(--ds-ease-standard);
   --ds-ease-spring: cubic-bezier(.34,1.56,.64,1);
 
   /* ---- Z-INDEX ---- */
@@ -118,6 +181,58 @@
   --ds-z-modal:    80;
   --ds-z-toast:    90;
   --ds-z-tooltip:  100;
+
+  /* ---- TYPE SCALE (MD3 — size / line-height / weight paired) ---- */
+  --ds-type-display-lg-size:   57px; --ds-type-display-lg-line:  64px; --ds-type-display-lg-weight:  400;
+  --ds-type-display-md-size:   45px; --ds-type-display-md-line:  52px; --ds-type-display-md-weight:  400;
+  --ds-type-display-sm-size:   36px; --ds-type-display-sm-line:  44px; --ds-type-display-sm-weight:  400;
+  --ds-type-headline-lg-size:  32px; --ds-type-headline-lg-line: 40px; --ds-type-headline-lg-weight: 400;
+  --ds-type-headline-md-size:  28px; --ds-type-headline-md-line: 36px; --ds-type-headline-md-weight: 400;
+  --ds-type-headline-sm-size:  24px; --ds-type-headline-sm-line: 32px; --ds-type-headline-sm-weight: 400;
+  --ds-type-title-lg-size:     22px; --ds-type-title-lg-line:    28px; --ds-type-title-lg-weight:    400;
+  --ds-type-title-md-size:     16px; --ds-type-title-md-line:    24px; --ds-type-title-md-weight:    500;
+  --ds-type-title-sm-size:     14px; --ds-type-title-sm-line:    20px; --ds-type-title-sm-weight:    500;
+  --ds-type-body-lg-size:      16px; --ds-type-body-lg-line:     24px; --ds-type-body-lg-weight:     400;
+  --ds-type-body-md-size:      14px; --ds-type-body-md-line:     20px; --ds-type-body-md-weight:     400;
+  --ds-type-body-sm-size:      12px; --ds-type-body-sm-line:     16px; --ds-type-body-sm-weight:     400;
+  --ds-type-label-lg-size:     14px; --ds-type-label-lg-line:    20px; --ds-type-label-lg-weight:    500;
+  --ds-type-label-md-size:     12px; --ds-type-label-md-line:    16px; --ds-type-label-md-weight:    500;
+  --ds-type-label-sm-size:     11px; --ds-type-label-sm-line:    16px; --ds-type-label-sm-weight:    500;
+
+  /* ---- DENSITY (MD3 — 3 levels, 4px step each) ---- */
+  --ds-density:       0;   /* 0=comfortable · -1=compact · -2=extra-compact */
+  --ds-density-step:  4px;
+
+  /* Density-aware component heights (comfortable baseline + density offset) */
+  --ds-h-button:    calc(40px + var(--ds-density) * var(--ds-density-step));
+  --ds-h-input:     calc(56px + var(--ds-density) * var(--ds-density-step));
+  --ds-h-chip:      calc(32px + var(--ds-density) * var(--ds-density-step));
+  --ds-h-list-item: calc(48px + var(--ds-density) * var(--ds-density-step));
+  --ds-h-table-row: calc(52px + var(--ds-density) * var(--ds-density-step));
+  --ds-touch-target: 44px; /* WCAG 2.5.8 / MD3 minimum */
+
+  /* ---- GRID (MD3 — 5 window size classes) ---- */
+  /* Breakpoints: compact <600 · medium 600–839 · expanded 840–1199 · large 1200–1599 · xl ≥1600 */
+  --ds-grid-cols-compact:  4;
+  --ds-grid-cols-medium:   8;
+  --ds-grid-cols-expanded: 12;
+
+  --ds-grid-margin-compact:  16px;
+  --ds-grid-margin-medium:   24px;
+  --ds-grid-margin-expanded: 24px;
+
+  --ds-grid-gutter-compact:  16px;
+  --ds-grid-gutter-medium:   24px;
+  --ds-grid-gutter-expanded: 24px;
+
+  /* ---- ELEVATION SURFACES (MD3 — primary-tinted surface levels) ---- */
+  /* In dark themes elevation = surface tint (not shadow depth). */
+  --ds-surface-0: var(--ds-bg);
+  --ds-surface-1: color-mix(in srgb, var(--ds-panel) 95%, var(--ds-purple) 5%);
+  --ds-surface-2: color-mix(in srgb, var(--ds-panel) 92%, var(--ds-purple) 8%);
+  --ds-surface-3: color-mix(in srgb, var(--ds-panel) 89%, var(--ds-purple) 11%);
+  --ds-surface-4: color-mix(in srgb, var(--ds-panel) 88%, var(--ds-purple) 12%);
+  --ds-surface-5: color-mix(in srgb, var(--ds-panel) 86%, var(--ds-purple) 14%);
 
   /* ---- LAYOUT ---- */
   --ds-header-h:  64px;
@@ -190,6 +305,36 @@
   --ds-neu-orange: 4px 4px 0px 0px rgba(194,65,12,0.45);
   --ds-neu-red:    4px 4px 0px 0px rgba(220,38,38,0.45);
 }
+
+/* =============================================================
+   DENSITY VARIANTS
+   Apply [data-density="compact"] or [data-density="extra-compact"]
+   to any ancestor to shift all density-aware component heights.
+   ============================================================= */
+
+[data-density="compact"]       { --ds-density: -1; }
+[data-density="extra-compact"] { --ds-density: -2; }
+
+/* =============================================================
+   TYPE SCALE UTILITIES (MD3)
+   Usage: <h1 class="ds-display-lg"> or <p class="ds-body-md">
+   ============================================================= */
+
+.ds-display-lg    { font-size: var(--ds-type-display-lg-size);   line-height: var(--ds-type-display-lg-line);   font-weight: var(--ds-type-display-lg-weight); }
+.ds-display-md    { font-size: var(--ds-type-display-md-size);   line-height: var(--ds-type-display-md-line);   font-weight: var(--ds-type-display-md-weight); }
+.ds-display-sm    { font-size: var(--ds-type-display-sm-size);   line-height: var(--ds-type-display-sm-line);   font-weight: var(--ds-type-display-sm-weight); }
+.ds-headline-lg   { font-size: var(--ds-type-headline-lg-size);  line-height: var(--ds-type-headline-lg-line);  font-weight: var(--ds-type-headline-lg-weight); }
+.ds-headline-md   { font-size: var(--ds-type-headline-md-size);  line-height: var(--ds-type-headline-md-line);  font-weight: var(--ds-type-headline-md-weight); }
+.ds-headline-sm   { font-size: var(--ds-type-headline-sm-size);  line-height: var(--ds-type-headline-sm-line);  font-weight: var(--ds-type-headline-sm-weight); }
+.ds-title-lg      { font-size: var(--ds-type-title-lg-size);     line-height: var(--ds-type-title-lg-line);     font-weight: var(--ds-type-title-lg-weight); }
+.ds-title-md      { font-size: var(--ds-type-title-md-size);     line-height: var(--ds-type-title-md-line);     font-weight: var(--ds-type-title-md-weight); }
+.ds-title-sm      { font-size: var(--ds-type-title-sm-size);     line-height: var(--ds-type-title-sm-line);     font-weight: var(--ds-type-title-sm-weight); }
+.ds-body-lg       { font-size: var(--ds-type-body-lg-size);      line-height: var(--ds-type-body-lg-line);      font-weight: var(--ds-type-body-lg-weight); }
+.ds-body-md       { font-size: var(--ds-type-body-md-size);      line-height: var(--ds-type-body-md-line);      font-weight: var(--ds-type-body-md-weight); }
+.ds-body-sm       { font-size: var(--ds-type-body-sm-size);      line-height: var(--ds-type-body-sm-line);      font-weight: var(--ds-type-body-sm-weight); }
+.ds-label-lg      { font-size: var(--ds-type-label-lg-size);     line-height: var(--ds-type-label-lg-line);     font-weight: var(--ds-type-label-lg-weight); }
+.ds-label-md      { font-size: var(--ds-type-label-md-size);     line-height: var(--ds-type-label-md-line);     font-weight: var(--ds-type-label-md-weight); }
+.ds-label-sm      { font-size: var(--ds-type-label-sm-size);     line-height: var(--ds-type-label-sm-line);     font-weight: var(--ds-type-label-sm-weight); }
 
 /* ---- GLOBAL RESET ---- */
 *, *::before, *::after { box-sizing: border-box; }

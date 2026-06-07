@@ -1,5 +1,6 @@
 import { Progress } from '@shieldai/ds'
-import { ComponentBlock } from '../../components/docs'
+import { ComponentBlock, DocSection, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { Progress } from '@shieldai/ds'
 
@@ -18,6 +19,18 @@ const PROPS = [
   { name: 'showLabel', type: 'boolean', default: 'false', description: 'Shows percentage label above the bar' },
   { name: 'max', type: 'number', default: '100', description: 'Maximum value for aria-valuemax' },
 ]
+
+const CONTROLS = [
+  { type: 'number' as const, key: 'value', label: 'value', default: 65, min: 0, max: 100, step: 5 },
+  { type: 'select' as const, key: 'color', label: 'color', default: 'purple', options: ['purple', 'green', 'cyan', 'orange', 'red'] },
+  { type: 'boolean' as const, key: 'showLabel', label: 'showLabel', default: true },
+]
+
+function genCode(v: ControlValues): string {
+  const parts = [`value={${v.value}}`, `color="${v.color}"`]
+  if (v.showLabel) parts.push('showLabel')
+  return `<Progress ${parts.join(' ')} />`
+}
 
 export default function ProgressPage() {
   return (
@@ -38,6 +51,23 @@ export default function ProgressPage() {
       code={CODE}
       filename="Progress.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <PlaygroundBlock
+          controls={CONTROLS}
+          render={(v) => (
+            <div className="w-72">
+              <Progress
+                value={v.value as number}
+                color={v.color as Parameters<typeof Progress>[0]['color']}
+                showLabel={v.showLabel as boolean}
+              />
+            </div>
+          )}
+          generateCode={genCode}
+          filename="Progress.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

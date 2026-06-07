@@ -8,6 +8,7 @@ export interface NavItem {
 export interface NavGroup {
   label: string
   num: string
+  icon: string  // lucide icon name, e.g. 'Home'
   items: NavItem[]
 }
 
@@ -15,6 +16,7 @@ export const NAV: NavGroup[] = [
   {
     label: 'Introduction',
     num: '00',
+    icon: 'Home',
     items: [
       { label: 'Overview',    href: '/',             status: 'done' },
       { label: 'Quick start', href: '/quick-start',  status: 'done' },
@@ -24,6 +26,7 @@ export const NAV: NavGroup[] = [
   {
     label: 'Foundations',
     num: '01',
+    icon: 'Layers',
     items: [
       { label: 'Colors',      href: '/foundations/colors',      status: 'done' },
       { label: 'Typography',  href: '/foundations/typography',  status: 'done' },
@@ -36,6 +39,7 @@ export const NAV: NavGroup[] = [
   {
     label: 'Components',
     num: '02',
+    icon: 'Package',
     items: [
       // Primitivos
       { label: 'Button',           href: '/components/button',           status: 'done' },
@@ -119,6 +123,7 @@ export const NAV: NavGroup[] = [
   {
     label: 'Layout',
     num: '03',
+    icon: 'Layout',
     items: [
       { label: 'App Layout',         href: '/layout/app-layout',         status: 'done' },
       { label: 'App Layout Toolbar', href: '/layout/app-layout-toolbar', status: 'done' },
@@ -135,6 +140,7 @@ export const NAV: NavGroup[] = [
   {
     label: 'Patterns',
     num: '04',
+    icon: 'Grid2X2',
     items: [
       { label: 'App Header',       href: '/patterns/app-header',      status: 'done' },
       { label: 'Agent Type Coding',href: '/patterns/agent-types',     status: 'done' },
@@ -146,6 +152,7 @@ export const NAV: NavGroup[] = [
   {
     label: 'Chat',
     num: '05',
+    icon: 'MessageSquare',
     items: [
       { label: 'Message Bubbles',   href: '/chat/messages',         status: 'done' },
       { label: 'Agent Execution',   href: '/chat/execution',        status: 'done' },
@@ -159,6 +166,7 @@ export const NAV: NavGroup[] = [
   {
     label: 'Workflow',
     num: '06',
+    icon: 'GitBranch',
     items: [
       { label: 'Node Types',       href: '/workflow/nodes',       status: 'done' },
       { label: 'Handles & Edges',  href: '/workflow/edges',       status: 'done' },
@@ -169,6 +177,7 @@ export const NAV: NavGroup[] = [
   {
     label: 'Voice & A11y',
     num: '07',
+    icon: 'Eye',
     items: [
       { label: 'Voice Principles', href: '/a11y/voice',          status: 'done' },
       { label: 'Tone in Practice', href: '/a11y/tone',           status: 'done' },
@@ -181,10 +190,22 @@ export const NAV: NavGroup[] = [
   {
     label: 'Resources',
     num: '08',
+    icon: 'Download',
     items: [
       { label: 'Downloads',        href: '/resources/downloads',  status: 'done' },
       { label: 'AGENTS.md',        href: '/resources/agents',     status: 'done' },
       { label: 'Changelog',        href: '/resources/changelog',  status: 'done' },
+    ],
+  },
+  {
+    label: 'Examples',
+    num: '09',
+    icon: 'MonitorPlay',
+    items: [
+      { label: 'Dashboard',      href: '/examples/dashboard',     status: 'done' },
+      { label: 'Agent Monitor',  href: '/examples/agent-monitor', status: 'done' },
+      { label: 'Data Explorer',  href: '/examples/data-explorer', status: 'done' },
+      { label: 'Settings',       href: '/examples/settings',      status: 'done' },
     ],
   },
 ]

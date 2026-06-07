@@ -1,5 +1,6 @@
 import { Textarea } from '@shieldai/ds'
-import { ComponentBlock } from '../../components/docs'
+import { ComponentBlock, DocSection, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { Textarea } from '@shieldai/ds'
 
@@ -21,6 +22,23 @@ const PROPS = [
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables the textarea' },
 ]
 
+const PLAYGROUND_CONTROLS = [
+  { type: 'select' as const, key: 'variant', label: 'variant', default: 'default', options: ['default', 'error', 'neu', 'neu-purple'] },
+  { type: 'select' as const, key: 'resize', label: 'resize', default: 'vertical', options: ['none', 'vertical', 'horizontal', 'both'] },
+  { type: 'text' as const, key: 'placeholder', label: 'placeholder', default: 'Enter your text here…' },
+  { type: 'boolean' as const, key: 'disabled', label: 'disabled', default: false },
+]
+
+function generateCode(v: ControlValues): string {
+  const parts: string[] = []
+  if (v.variant !== 'default') parts.push(`variant="${v.variant}"`)
+  if (v.resize !== 'vertical') parts.push(`resize="${v.resize}"`)
+  if (v.placeholder !== 'Enter your text here…') parts.push(`placeholder="${v.placeholder}"`)
+  if (v.disabled) parts.push('disabled')
+  const attrs = parts.length ? ' ' + parts.join(' ') : ''
+  return `<Textarea${attrs} rows={3} />`
+}
+
 export default function TextareaPage() {
   return (
     <ComponentBlock
@@ -39,6 +57,26 @@ export default function TextareaPage() {
       code={CODE}
       filename="Textarea.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <p className="text-ds-comment text-[13px] leading-relaxed mb-4">
+          Tweak props on the right and see the result live. The generated code updates instantly.
+        </p>
+        <PlaygroundBlock
+          controls={PLAYGROUND_CONTROLS}
+          render={(v) => (
+            <Textarea
+              variant={v.variant as 'default' | 'error' | 'neu' | 'neu-purple'}
+              resize={v.resize as 'none' | 'vertical' | 'horizontal' | 'both'}
+              placeholder={v.placeholder as string}
+              disabled={v.disabled as boolean}
+              rows={3}
+            />
+          )}
+          generateCode={generateCode}
+          filename="Textarea.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

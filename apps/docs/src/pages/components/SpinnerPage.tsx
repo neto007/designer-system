@@ -1,5 +1,6 @@
 import { Spinner } from '@shieldai/ds'
-import { ComponentBlock, PreviewRow } from '../../components/docs'
+import { ComponentBlock, DocSection, PreviewRow, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { Spinner } from '@shieldai/ds'
 
@@ -24,6 +25,20 @@ const PROPS = [
   { name: 'color', type: '"default" | "purple" | "green" | "cyan" | "orange" | "red" | "muted"', default: '"default"', description: 'Spinner color' },
   { name: 'label', type: 'string', default: '"Loading..."', description: 'Accessible label (aria-label). When non-default, also renders as visible text.' },
 ]
+
+const CONTROLS = [
+  { type: 'select' as const, key: 'size', label: 'size', default: 'md', options: ['sm', 'md', 'lg', 'xl'] },
+  { type: 'select' as const, key: 'color', label: 'color', default: 'purple', options: ['default', 'purple', 'green', 'cyan', 'orange', 'red', 'muted'] },
+  { type: 'text' as const, key: 'label', label: 'label', default: 'Loading...' },
+]
+
+function genCode(v: ControlValues): string {
+  const parts: string[] = []
+  if (v.size !== 'md') parts.push(`size="${v.size}"`)
+  if (v.color !== 'default') parts.push(`color="${v.color}"`)
+  if (v.label !== 'Loading...') parts.push(`label="${v.label}"`)
+  return `<Spinner${parts.length ? ' ' + parts.join(' ') : ''} />`
+}
 
 export default function SpinnerPage() {
   return (
@@ -56,6 +71,21 @@ export default function SpinnerPage() {
       code={CODE}
       filename="Spinner.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <PlaygroundBlock
+          controls={CONTROLS}
+          render={(v) => (
+            <Spinner
+              size={v.size as Parameters<typeof Spinner>[0]['size']}
+              color={v.color as Parameters<typeof Spinner>[0]['color']}
+              label={v.label as string}
+            />
+          )}
+          generateCode={genCode}
+          filename="Spinner.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

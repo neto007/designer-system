@@ -1,5 +1,6 @@
 import { Divider } from '@shieldai/ds'
-import { ComponentBlock } from '../../components/docs'
+import { ComponentBlock, DocSection, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { Divider } from '@shieldai/ds'
 
@@ -23,6 +24,23 @@ const PROPS = [
   { name: 'className', type: 'string', description: 'Additional classes' },
 ]
 
+const PLAYGROUND_CONTROLS = [
+  { type: 'select' as const, key: 'orientation', label: 'orientation', default: 'horizontal', options: ['horizontal', 'vertical'] },
+  { type: 'text' as const, key: 'label', label: 'label', default: '' },
+]
+
+function generateCode(v: ControlValues): string {
+  const parts: string[] = []
+  if (v.label) parts.push(`label="${v.label}"`)
+  if (v.orientation !== 'horizontal') parts.push(`orientation="${v.orientation}"`)
+  const attrs = parts.length ? ` ${parts.join(' ')}` : ''
+  const code = `<Divider${attrs} />`
+  if (v.orientation === 'vertical') {
+    return `<div className="flex items-center h-24">\n  ${code}\n</div>`
+  }
+  return code
+}
+
 export default function DividerPage() {
   return (
     <ComponentBlock
@@ -45,6 +63,25 @@ export default function DividerPage() {
       code={CODE}
       filename="Divider.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <p className="text-ds-comment text-[13px] leading-relaxed mb-4">
+          Tweak props on the right and see the result live. The generated code updates instantly.
+        </p>
+        <PlaygroundBlock
+          controls={PLAYGROUND_CONTROLS}
+          render={(v) => (
+            <div className={v.orientation === 'vertical' ? 'h-24' : ''}>
+              <Divider
+                orientation={v.orientation as 'horizontal' | 'vertical'}
+                label={v.label as string}
+              />
+            </div>
+          )}
+          generateCode={generateCode}
+          filename="Divider.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

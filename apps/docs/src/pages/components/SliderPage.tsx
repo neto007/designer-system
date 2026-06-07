@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Slider } from '@shieldai/ds'
-import { ComponentBlock, DocSection, PreviewRow } from '../../components/docs'
+import { ComponentBlock, DocSection, PreviewRow, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { Slider } from '@shieldai/ds'
 
@@ -38,6 +39,27 @@ const PROPS = [
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Prevents interaction' },
   { name: 'orientation', type: '"horizontal" | "vertical"', default: '"horizontal"', description: 'Track orientation' },
 ]
+
+const PLAYGROUND_CONTROLS = [
+  { type: 'select' as const, key: 'color', label: 'color', default: 'purple', options: ['purple', 'green', 'orange', 'red', 'cyan'] },
+  { type: 'select' as const, key: 'size', label: 'size', default: 'md', options: ['sm', 'md', 'lg'] },
+  { type: 'boolean' as const, key: 'showValue', label: 'showValue', default: true },
+  { type: 'boolean' as const, key: 'marks', label: 'marks', default: false },
+  { type: 'boolean' as const, key: 'disabled', label: 'disabled', default: false },
+  { type: 'text' as const, key: 'label', label: 'label', default: 'Volume' },
+]
+
+function generateCode(v: ControlValues): string {
+  const parts: string[] = []
+  if (v.color !== 'purple') parts.push(`color="${v.color}"`)
+  if (v.size !== 'md') parts.push(`size="${v.size}"`)
+  if (v.showValue) parts.push('showValue')
+  if (v.marks) parts.push('marks')
+  if (v.disabled) parts.push('disabled')
+  if (v.label !== 'Volume') parts.push(`label="${v.label}"`)
+  const attrs = parts.length ? ' ' + parts.join(' ') : ''
+  return `<Slider${attrs} />`
+}
 
 function ControlledDemo() {
   const [val, setVal] = useState([42])
@@ -100,6 +122,32 @@ export default function SliderPage() {
         <div className="w-full max-w-xs">
           <Slider defaultValue={[40]} disabled label="Disabled" showValue />
         </div>
+      </DocSection>
+
+      <DocSection title="Interactive Playground">
+        <p className="text-ds-comment text-[13px] leading-relaxed mb-4">
+          Tweak props on the right and see the result live. The generated code updates instantly.
+        </p>
+        <PlaygroundBlock
+          controls={PLAYGROUND_CONTROLS}
+          render={(v) => {
+            const [val, setVal] = useState([50])
+            return (
+              <Slider
+                value={val}
+                onValueChange={setVal}
+                color={v.color as 'purple' | 'green' | 'orange' | 'red' | 'cyan'}
+                size={v.size as 'sm' | 'md' | 'lg'}
+                showValue={v.showValue as boolean}
+                marks={v.marks as boolean}
+                disabled={v.disabled as boolean}
+                label={v.label as string}
+              />
+            )
+          }}
+          generateCode={generateCode}
+          filename="Slider.tsx"
+        />
       </DocSection>
     </ComponentBlock>
   )

@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { RadioGroup } from '@shieldai/ds'
-import { ComponentBlock, PreviewRow } from '../../components/docs'
+import { ComponentBlock, DocSection, PreviewRow, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { RadioGroup } from '@shieldai/ds'
 
@@ -46,6 +48,19 @@ const SIZE_ITEMS = [
   { value: 'lg', label: 'Large' },
 ]
 
+const PLAYGROUND_CONTROLS = [
+  { type: 'select' as const, key: 'orientation', label: 'orientation', default: 'vertical', options: ['vertical', 'horizontal'] },
+  { type: 'boolean' as const, key: 'disabled', label: 'disabled', default: false },
+]
+
+function generateCode(v: ControlValues): string {
+  const parts: string[] = []
+  if (v.orientation !== 'vertical') parts.push(`orientation="${v.orientation}"`)
+  if (v.disabled) parts.push('disabled')
+  const attrs = parts.length ? ' ' + parts.join(' ') : ''
+  return `<RadioGroup${attrs} />`
+}
+
 export default function RadioGroupPage() {
   return (
     <ComponentBlock
@@ -66,6 +81,34 @@ export default function RadioGroupPage() {
       code={CODE}
       filename="RadioGroup.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <p className="text-ds-comment text-[13px] leading-relaxed mb-4">
+          Tweak props on the right and see the result live. The generated code updates instantly.
+        </p>
+        <PlaygroundBlock
+          controls={PLAYGROUND_CONTROLS}
+          render={(v) => {
+            const [val, setVal] = useState('option1')
+            const items = [
+              { value: 'option1', label: 'Option One', description: 'The first option' },
+              { value: 'option2', label: 'Option Two', description: 'The second option' },
+              { value: 'option3', label: 'Option Three', description: 'The third option' },
+            ]
+            return (
+              <RadioGroup
+                items={items}
+                value={val}
+                onValueChange={setVal}
+                orientation={v.orientation as 'vertical' | 'horizontal'}
+                disabled={v.disabled as boolean}
+              />
+            )
+          }}
+          generateCode={generateCode}
+          filename="RadioGroup.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

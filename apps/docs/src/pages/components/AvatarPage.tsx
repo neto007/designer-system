@@ -1,5 +1,6 @@
 import { Avatar } from '@shieldai/ds'
-import { ComponentBlock, PreviewRow } from '../../components/docs'
+import { ComponentBlock, DocSection, PreviewRow, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { Avatar } from '@shieldai/ds'
 
@@ -23,6 +24,19 @@ const PROPS = [
   { name: 'initials', type: 'string', description: 'Fallback text shown when no image' },
   { name: 'alt', type: 'string', description: 'Alt text for the image' },
 ]
+
+const CONTROLS = [
+  { type: 'select' as const, key: 'variant', label: 'variant', default: 'user', options: ['user', 'bot', 'tool', 'default'] },
+  { type: 'select' as const, key: 'size', label: 'size', default: 'md', options: ['sm', 'md', 'lg'] },
+  { type: 'text' as const, key: 'initials', label: 'initials', default: 'JD' },
+]
+
+function genCode(v: ControlValues): string {
+  const parts: string[] = [`variant="${v.variant}"`]
+  if (v.size !== 'md') parts.push(`size="${v.size}"`)
+  parts.push(`initials="${v.initials}"`)
+  return `<Avatar ${parts.join(' ')} />`
+}
 
 export default function AvatarPage() {
   return (
@@ -49,6 +63,21 @@ export default function AvatarPage() {
       code={CODE}
       filename="Avatar.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <PlaygroundBlock
+          controls={CONTROLS}
+          render={(v) => (
+            <Avatar
+              variant={v.variant as Parameters<typeof Avatar>[0]['variant']}
+              size={v.size as 'sm' | 'md' | 'lg'}
+              initials={v.initials as string}
+            />
+          )}
+          generateCode={genCode}
+          filename="Avatar.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

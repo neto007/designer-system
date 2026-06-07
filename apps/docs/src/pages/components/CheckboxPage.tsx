@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Checkbox } from '@shieldai/ds'
-import { ComponentBlock, PreviewRow } from '../../components/docs'
+import { ComponentBlock, DocSection, PreviewRow, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { Checkbox } from '@shieldai/ds'
 
@@ -37,6 +38,23 @@ const PROPS = [
   { name: 'required', type: 'boolean', default: 'false', description: 'Shows red asterisk on label' },
 ]
 
+const PLAYGROUND_CONTROLS = [
+  { type: 'text' as const, key: 'label', label: 'label', default: 'Accept terms and conditions' },
+  { type: 'text' as const, key: 'description', label: 'description', default: 'You must agree to continue' },
+  { type: 'boolean' as const, key: 'disabled', label: 'disabled', default: false },
+  { type: 'boolean' as const, key: 'checked', label: 'checked', default: true },
+]
+
+function generateCode(v: ControlValues): string {
+  const parts: string[] = []
+  parts.push(`label="${v.label}"`)
+  if (v.description) parts.push(`description="${v.description}"`)
+  if (v.disabled) parts.push('disabled')
+  if (v.checked) parts.push('defaultChecked')
+  const attrs = parts.length ? ' ' + parts.join(' ') : ''
+  return `<Checkbox${attrs} />`
+}
+
 export default function CheckboxPage() {
   const [checked, setChecked] = useState<boolean | 'indeterminate'>('indeterminate')
 
@@ -69,6 +87,25 @@ export default function CheckboxPage() {
       code={CODE}
       filename="Checkbox.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <p className="text-ds-comment text-[13px] leading-relaxed mb-4">
+          Tweak props on the right and see the result live. The generated code updates instantly.
+        </p>
+        <PlaygroundBlock
+          controls={PLAYGROUND_CONTROLS}
+          render={(v) => (
+            <Checkbox
+              label={v.label as string}
+              description={v.description as string}
+              disabled={v.disabled as boolean}
+              defaultChecked={v.checked as boolean}
+            />
+          )}
+          generateCode={generateCode}
+          filename="Checkbox.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

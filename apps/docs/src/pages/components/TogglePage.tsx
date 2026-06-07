@@ -1,5 +1,6 @@
 import { Toggle } from '@shieldai/ds'
-import { ComponentBlock, PreviewRow } from '../../components/docs'
+import { ComponentBlock, DocSection, PreviewRow, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { Toggle } from '@shieldai/ds'
 
@@ -38,6 +39,22 @@ const PROPS = [
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables the toggle' },
 ]
 
+const CONTROLS = [
+  { type: 'text' as const, key: 'label', label: 'label', default: 'Enable feature' },
+  { type: 'text' as const, key: 'description', label: 'description', default: '' },
+  { type: 'select' as const, key: 'size', label: 'size', default: 'md', options: ['sm', 'md'] },
+  { type: 'boolean' as const, key: 'disabled', label: 'disabled', default: false },
+]
+
+function genCode(v: ControlValues): string {
+  const parts: string[] = []
+  if (v.label) parts.push(`label="${v.label}"`)
+  if (v.description) parts.push(`description="${v.description}"`)
+  if (v.size !== 'md') parts.push(`size="${v.size}"`)
+  if (v.disabled) parts.push('disabled')
+  return `<Toggle ${parts.join(' ')} />`
+}
+
 export default function TogglePage() {
   return (
     <ComponentBlock
@@ -71,6 +88,23 @@ export default function TogglePage() {
       code={CODE}
       filename="Toggle.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <PlaygroundBlock
+          controls={CONTROLS}
+          render={(v) => (
+            <Toggle
+              label={v.label as string}
+              description={(v.description as string) || undefined}
+              size={v.size as 'sm' | 'md'}
+              disabled={v.disabled as boolean}
+              defaultChecked
+            />
+          )}
+          generateCode={genCode}
+          filename="Toggle.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

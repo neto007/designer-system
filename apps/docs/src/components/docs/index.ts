@@ -1,2 +1,5 @@
 export { ComponentBlock, DocSection, PreviewRow } from './ComponentBlock'
 export { PropsTable } from './PropsTable'
+export { CommandPalette } from './CommandPalette'
+export { PlaygroundBlock } from './PlaygroundBlock'
+export type { ControlDef, ControlValues } from './PlaygroundBlock'

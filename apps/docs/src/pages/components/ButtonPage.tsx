@@ -1,6 +1,7 @@
 import { Button } from '@shieldai/ds'
 import { Terminal, Zap } from 'lucide-react'
-import { ComponentBlock, PreviewRow } from '../../components/docs'
+import { ComponentBlock, DocSection, PreviewRow, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { Button } from '@shieldai/ds'
 
@@ -39,6 +40,24 @@ const PROPS = [
   { name: 'rightIcon', type: 'ReactNode', description: 'Icon rendered after label' },
   { name: 'asChild', type: 'boolean', default: 'false', description: 'Delegates rendering to child (Radix Slot)' },
 ]
+
+const PLAYGROUND_CONTROLS = [
+  { type: 'select' as const, key: 'variant', label: 'variant', default: 'default', options: ['default', 'secondary', 'destructive', 'outline', 'ghost', 'link', 'neu', 'neu-purple', 'neu-green', 'neu-pink', 'neu-red'] },
+  { type: 'select' as const, key: 'size', label: 'size', default: 'md', options: ['sm', 'md', 'lg'] },
+  { type: 'text' as const, key: 'label', label: 'label', default: 'Click me' },
+  { type: 'boolean' as const, key: 'loading', label: 'loading', default: false },
+  { type: 'boolean' as const, key: 'disabled', label: 'disabled', default: false },
+]
+
+function generateCode(v: ControlValues): string {
+  const parts: string[] = []
+  if (v.variant !== 'default') parts.push(`variant="${v.variant}"`)
+  if (v.size !== 'md') parts.push(`size="${v.size}"`)
+  if (v.loading) parts.push('loading')
+  if (v.disabled) parts.push('disabled')
+  const attrs = parts.length ? ' ' + parts.join(' ') : ''
+  return `<Button${attrs}>${v.label}</Button>`
+}
 
 export default function ButtonPage() {
   return (
@@ -80,6 +99,27 @@ export default function ButtonPage() {
       code={CODE}
       filename="Button.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <p className="text-ds-comment text-[13px] leading-relaxed mb-4">
+          Tweak props on the right and see the result live. The generated code updates instantly.
+        </p>
+        <PlaygroundBlock
+          controls={PLAYGROUND_CONTROLS}
+          render={(v) => (
+            <Button
+              variant={v.variant as Parameters<typeof Button>[0]['variant']}
+              size={v.size as 'sm' | 'md' | 'lg'}
+              loading={v.loading as boolean}
+              disabled={v.disabled as boolean}
+            >
+              {v.label as string}
+            </Button>
+          )}
+          generateCode={generateCode}
+          filename="Button.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

@@ -1,6 +1,7 @@
 import { Alert, AlertTitle, AlertDescription } from '@shieldai/ds'
 import { Info, CheckCircle, AlertTriangle, XCircle } from 'lucide-react'
-import { ComponentBlock } from '../../components/docs'
+import { ComponentBlock, DocSection, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { Alert, AlertTitle, AlertDescription } from '@shieldai/ds'
 import { Info, CheckCircle, AlertTriangle, XCircle } from 'lucide-react'
@@ -30,6 +31,26 @@ const PROPS = [
   { name: 'icon', type: 'ReactNode', description: 'Icon rendered in the left column' },
   { name: 'children', type: 'ReactNode', required: true, description: 'Alert content — typically AlertTitle + AlertDescription' },
 ]
+
+const ICON_MAP = {
+  info: <Info className="h-4 w-4" />,
+  success: <CheckCircle className="h-4 w-4" />,
+  warning: <AlertTriangle className="h-4 w-4" />,
+  error: <XCircle className="h-4 w-4" />,
+}
+
+const CONTROLS = [
+  { type: 'select' as const, key: 'variant', label: 'variant', default: 'info', options: ['info', 'success', 'warning', 'error'] },
+  { type: 'text' as const, key: 'title', label: 'title', default: 'Attention' },
+  { type: 'text' as const, key: 'description', label: 'description', default: 'Something happened that requires your attention.' },
+]
+
+function genCode(v: ControlValues): string {
+  return `<Alert variant="${v.variant}" icon={<Icon />}>
+  <AlertTitle>${v.title}</AlertTitle>
+  <AlertDescription>${v.description}</AlertDescription>
+</Alert>`
+}
 
 export default function AlertPage() {
   return (
@@ -61,6 +82,25 @@ export default function AlertPage() {
       code={CODE}
       filename="Alert.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <PlaygroundBlock
+          controls={CONTROLS}
+          render={(v) => (
+            <div className="w-full max-w-lg">
+              <Alert
+                variant={v.variant as Parameters<typeof Alert>[0]['variant']}
+                icon={ICON_MAP[v.variant as keyof typeof ICON_MAP]}
+              >
+                <AlertTitle>{v.title as string}</AlertTitle>
+                <AlertDescription>{v.description as string}</AlertDescription>
+              </Alert>
+            </div>
+          )}
+          generateCode={genCode}
+          filename="Alert.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

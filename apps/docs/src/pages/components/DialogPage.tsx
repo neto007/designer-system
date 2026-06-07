@@ -1,10 +1,12 @@
+import { useState } from 'react'
 import {
   Dialog, DialogTrigger, DialogContent,
   DialogHeader, DialogTitle, DialogDescription,
   DialogFooter, DialogClose,
   Button, Input, Textarea,
 } from '@shieldai/ds'
-import { ComponentBlock, PreviewRow } from '../../components/docs'
+import { ComponentBlock, DocSection, PreviewRow, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import {
   Dialog, DialogTrigger, DialogContent,
@@ -51,6 +53,39 @@ const CODE = `import {
 const PROPS = [
   { name: 'variant', type: '"default" | "neu" | "purple"', default: '"default"', description: 'Visual style of DialogContent' },
 ]
+
+const PLAYGROUND_CONTROLS = [
+  { type: 'select' as const, key: 'variant', label: 'variant', default: 'default', options: ['default', 'neu', 'purple'] },
+  { type: 'boolean' as const, key: 'showClose', label: 'showClose', default: true },
+  { type: 'text' as const, key: 'title', label: 'title', default: 'Confirm Action' },
+  { type: 'text' as const, key: 'description', label: 'description', default: 'Are you sure you want to proceed with this action?' },
+]
+
+function generateDialogCode(v: ControlValues): string {
+  const openTrigger = v.variant === 'default' ? 'outline' : 'neu-purple'
+  let lines = `import { useState } from 'react'\nimport { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, Button } from '@shieldai/ds'\n\n`
+  lines += 'export default function Example() {\n'
+  lines += '  const [open, setOpen] = useState(false)\n\n'
+  lines += '  return (\n'
+  lines += '    <Dialog open={open} onOpenChange={setOpen}>\n'
+  lines += '      <DialogTrigger asChild>\n'
+  lines += `        <Button variant="${openTrigger}">Open Dialog</Button>\n`
+  lines += '      </DialogTrigger>\n'
+  lines += `      <DialogContent variant="${v.variant}" showClose={${v.showClose}}>\n`
+  lines += '        <DialogHeader>\n'
+  lines += `          <DialogTitle>${v.title}</DialogTitle>\n`
+  lines += `          <DialogDescription>${v.description}</DialogDescription>\n`
+  lines += '        </DialogHeader>\n'
+  lines += '        <DialogFooter>\n'
+  lines += '          <Button variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>\n'
+  lines += '          <Button variant="neu-purple" onClick={() => setOpen(false)}>Confirm</Button>\n'
+  lines += '        </DialogFooter>\n'
+  lines += '      </DialogContent>\n'
+  lines += '    </Dialog>\n'
+  lines += '  )\n'
+  lines += '}'
+  return lines
+}
 
 export default function DialogPage() {
   return (
@@ -106,6 +141,37 @@ export default function DialogPage() {
       code={CODE}
       filename="Dialog.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <p className="text-ds-comment text-[13px] leading-relaxed mb-4">
+          Tweak props on the right and see the result live. The generated code updates instantly.
+        </p>
+        <PlaygroundBlock
+          controls={PLAYGROUND_CONTROLS}
+          render={(v) => {
+            const [open, setOpen] = useState(false)
+            return (
+              <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger asChild>
+                  <Button variant={v.variant === 'default' ? 'outline' : 'neu-purple'}>Open Dialog</Button>
+                </DialogTrigger>
+                <DialogContent variant={v.variant as 'default' | 'neu' | 'purple'} showClose={v.showClose as boolean}>
+                  <DialogHeader>
+                    <DialogTitle>{v.title as string}</DialogTitle>
+                    <DialogDescription>{v.description as string}</DialogDescription>
+                  </DialogHeader>
+                  <DialogFooter>
+                    <Button variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
+                    <Button variant="neu-purple" onClick={() => setOpen(false)}>Confirm</Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            )
+          }}
+          generateCode={generateDialogCode}
+          filename="Dialog.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@shieldai/ds'
-import { ComponentBlock } from '../../components/docs'
+import { ComponentBlock, DocSection, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@shieldai/ds'
 
@@ -25,6 +27,27 @@ const CODE = `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@shielda
 <Tabs value={activeTab} onValueChange={setActiveTab}>
   ...
 </Tabs>`
+
+const PLAYGROUND_CONTROLS = [
+  { type: 'text' as const, key: 'tab1Label', label: 'tab1Label', default: 'Tab One' },
+  { type: 'text' as const, key: 'tab2Label', label: 'tab2Label', default: 'Tab Two' },
+  { type: 'text' as const, key: 'tab3Label', label: 'tab3Label', default: 'Tab Three' },
+]
+
+function generateCode(v: ControlValues): string {
+  return `import { Tabs, TabsList, TabsTrigger, TabsContent } from '@shieldai/ds'
+
+<Tabs defaultValue="1">
+  <TabsList>
+    <TabsTrigger value="1">{${v.tab1Label}}</TabsTrigger>
+    <TabsTrigger value="2">{${v.tab2Label}}</TabsTrigger>
+    <TabsTrigger value="3">{${v.tab3Label}}</TabsTrigger>
+  </TabsList>
+  <TabsContent value="1"><p>Content for ${v.tab1Label}</p></TabsContent>
+  <TabsContent value="2"><p>Content for ${v.tab2Label}</p></TabsContent>
+  <TabsContent value="3"><p>Content for ${v.tab3Label}</p></TabsContent>
+</Tabs>`
+}
 
 const PROPS = [
   { name: 'defaultValue', type: 'string', description: 'Initial active tab (uncontrolled)' },
@@ -62,6 +85,40 @@ export default function TabsPage() {
       code={CODE}
       filename="Tabs.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <p className="text-ds-comment text-[13px] leading-relaxed mb-4">
+          Tweak tab labels and see the result live. The generated code updates instantly.
+        </p>
+        <PlaygroundBlock
+          controls={PLAYGROUND_CONTROLS}
+          render={(v) => {
+            const [tab, setTab] = useState('1')
+            return (
+              <div className="w-full max-w-lg">
+                <Tabs value={tab} onValueChange={setTab}>
+                  <TabsList>
+                    <TabsTrigger value="1">{v.tab1Label as string}</TabsTrigger>
+                    <TabsTrigger value="2">{v.tab2Label as string}</TabsTrigger>
+                    <TabsTrigger value="3">{v.tab3Label as string}</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="1">
+                    <div className="p-4 text-ds-comment text-sm">Content for {v.tab1Label as string}</div>
+                  </TabsContent>
+                  <TabsContent value="2">
+                    <div className="p-4 text-ds-comment text-sm">Content for {v.tab2Label as string}</div>
+                  </TabsContent>
+                  <TabsContent value="3">
+                    <div className="p-4 text-ds-comment text-sm">Content for {v.tab3Label as string}</div>
+                  </TabsContent>
+                </Tabs>
+              </div>
+            )
+          }}
+          generateCode={generateCode}
+          filename="Tabs.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

@@ -1,6 +1,7 @@
 import { Badge } from '@shieldai/ds'
 import { Bot } from 'lucide-react'
-import { ComponentBlock, PreviewRow } from '../../components/docs'
+import { ComponentBlock, DocSection, PreviewRow, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { Badge } from '@shieldai/ds'
 
@@ -25,6 +26,18 @@ const PROPS = [
   { name: 'dot', type: 'boolean', default: 'false', description: 'Shows a status dot before label' },
   { name: 'icon', type: 'ReactNode', description: 'Icon rendered before label' },
 ]
+
+const CONTROLS = [
+  { type: 'select' as const, key: 'variant', label: 'variant', default: 'purple', options: ['purple', 'green', 'cyan', 'pink', 'orange', 'yellow', 'red', 'muted', 'solid-green', 'solid-red', 'solid-orange', 'solid-purple'] },
+  { type: 'text' as const, key: 'label', label: 'label', default: 'Status' },
+  { type: 'boolean' as const, key: 'dot', label: 'dot', default: false },
+]
+
+function genCode(v: ControlValues): string {
+  const parts: string[] = [`variant="${v.variant}"`]
+  if (v.dot) parts.push('dot')
+  return `<Badge ${parts.join(' ')}>${v.label}</Badge>`
+}
 
 export default function BadgePage() {
   return (
@@ -56,6 +69,22 @@ export default function BadgePage() {
       code={CODE}
       filename="Badge.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <PlaygroundBlock
+          controls={CONTROLS}
+          render={(v) => (
+            <Badge
+              variant={v.variant as Parameters<typeof Badge>[0]['variant']}
+              dot={v.dot as boolean}
+            >
+              {v.label as string}
+            </Badge>
+          )}
+          generateCode={genCode}
+          filename="Badge.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

@@ -1,5 +1,6 @@
 import { Select } from '@shieldai/ds'
-import { ComponentBlock } from '../../components/docs'
+import { ComponentBlock, DocSection, PlaygroundBlock } from '../../components/docs'
+import type { ControlValues } from '../../components/docs'
 
 const CODE = `import { Select } from '@shieldai/ds'
 
@@ -52,6 +53,25 @@ const AGENT_ITEMS = [
   { value: 'loop', label: 'Loop' },
 ]
 
+const PLAYGROUND_ITEMS = [
+  { value: 'option1', label: 'Option 1' },
+  { value: 'option2', label: 'Option 2' },
+  { value: 'option3', label: 'Option 3' },
+]
+
+const PLAYGROUND_CONTROLS = [
+  { type: 'text' as const, key: 'placeholder', label: 'placeholder', default: 'Select an option' },
+  { type: 'boolean' as const, key: 'disabled', label: 'disabled', default: false },
+]
+
+function generateCode(v: ControlValues): string {
+  const parts: string[] = []
+  if (v.placeholder !== 'Select an option') parts.push(`placeholder="${v.placeholder}"`)
+  if (v.disabled) parts.push('disabled')
+  const attrs = parts.length ? ' ' + parts.join(' ') : ''
+  return `<Select${attrs} />`
+}
+
 export default function SelectPage() {
   return (
     <ComponentBlock
@@ -86,6 +106,26 @@ export default function SelectPage() {
       code={CODE}
       filename="Select.tsx"
       props={PROPS}
-    />
+    >
+      <DocSection title="Interactive Playground">
+        <p className="text-ds-comment text-[13px] leading-relaxed mb-4">
+          Tweak props on the right and see the result live. The generated code updates instantly.
+        </p>
+        <PlaygroundBlock
+          controls={PLAYGROUND_CONTROLS}
+          render={(v) => (
+            <div className="w-full max-w-xs">
+              <Select
+                placeholder={v.placeholder as string}
+                disabled={v.disabled as boolean}
+                items={PLAYGROUND_ITEMS}
+              />
+            </div>
+          )}
+          generateCode={generateCode}
+          filename="Select.tsx"
+        />
+      </DocSection>
+    </ComponentBlock>
   )
 }

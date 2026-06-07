@@ -91,9 +91,22 @@ interface SectionProps {
 }
 
 export function DocSection({ title, children }: SectionProps) {
+  const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
   return (
-    <div className="space-y-4 pt-8 border-t border-ds-current">
-      <h2 className="font-mono text-[10px] uppercase tracking-widest text-ds-comment">{title}</h2>
+    <div id={slug} className="space-y-4 pt-8 border-t border-ds-current scroll-mt-8">
+      <div className="flex items-center gap-2 group">
+        <h2 className="font-mono text-[10px] uppercase tracking-widest text-ds-comment">{title}</h2>
+        <a
+          href={`#${slug}`}
+          className="opacity-0 group-hover:opacity-100 transition-opacity text-ds-comment hover:text-ds-purple"
+          aria-label={`Link to ${title}`}
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+          </svg>
+        </a>
+      </div>
       {children}
     </div>
   )
